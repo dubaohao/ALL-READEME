@@ -1,6 +1,12 @@
 # REACT安装方式
 ## 1.官方快速脚手架(傻瓜式安装)
-`create-react-app`
+```
+
+	npm install -g create-react-app
+	create-react-app my-app
+	cd my-app/
+	npm start
+```
 
 ## 2.自己搭建-基本的组件 npm install --save
 react 
@@ -130,12 +136,13 @@ Chrome可以安装React Developer Tools
 
 	export default class Header extends React.Component{
 
-    	render()
+    	render(){
         	renturn (
             	<header>
                 	<h1>这里是header</h1>
             	</header>
         	)
+		}
 	}
 
 ```
@@ -147,13 +154,14 @@ Chrome可以安装React Developer Tools
 	import ComponentHeader from './compenents/header';
 
 	class Index extends React.Component{
-	    render()
+	    render(){
 	        renturn (
 	            <div>
  	               <ComponentHeader/>
  	               <h2>页面主体内容</h2>
 	            </div>
 	        )
+		}
 	}
 
 	ReactDOM.render(<Index/>,document.getElementById('example'));
@@ -173,12 +181,13 @@ Chrome可以安装React Developer Tools
     var ReactDOM = require('react-dom');
     
     export default class Footer extends React.Component{
-    	render()
+    	render(){
     		renturn (
     			<div>
     				<h1>这里是footer</h1>
     			</div>
     		)
+		}
     }
 ```
 
@@ -189,12 +198,13 @@ Chrome可以安装React Developer Tools
 	var ReactDOM = require('react-dom');
 
 	export default class Body extends React.Component{
-   		render()
+   		render(){
         	renturn (
             	<div>
                 	<h1>这里是body</h1>
             	</div>
         	)
+		}
 	}
 ```
 
@@ -208,7 +218,7 @@ Chrome可以安装React Developer Tools
 	import ComponentBody from './compenents/body';
 
 	class Index extends React.Component{
-    	render()
+    	render(){
         	renturn (
             	<div>
                 	<ComponentHeader/>
@@ -217,6 +227,7 @@ Chrome可以安装React Developer Tools
                 	<h2>页面主体内容</h2>
             	</div>
         	)
+		}
 	}
 	
 	ReactDOM.render(
@@ -334,7 +345,7 @@ state 更改，会立马进行刷新
 	    )
 	}
 ```
-* 思考为什么使用onchange(),不使用noBlur()
+*思考为什么使用onchange(),不使用noBlur()*
 
 ###4.可复用组件
 * 1.数据验证(当前组件Body,参数age,类的后面定义)
@@ -448,7 +459,116 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 4.缺点事动画，伪类（hover）等不可用
 
 ###2.内联样式中的表达式
+可以使用三元表达式，或者一些条件语句，结合事件对样式进行赋值改变
 ###3.css模块化
+*如何保证自己写的样式不影响其他人？*（大家写的css样式className还可能相同呢）
+
+* 首先安装三个插件
+`npm intall --save babel-plugin-react-html-attrs style-loader css-loader`
+样式的class和className都可以使用了
+* 入口文件需要加入类似如下的文件，***也是一种规则***
+```index.js
+
+				{
+					test: /\.css$/,
+					exclude: /node_modules/,
+					loader: 'style!css?module&localIdentName=[hash:base64:5]&-url'
+				},
+```
+
+定义一个自己的myfooter.css文件
+```css
+
+	.minfooter{
+		color:red;
+	}
+```
+使用：在组件里可以直接引用了~
+
+`import footerCss=require（"../../css/myfooter.css");`
+`class={footer.minfooter}`
+>1.为什么要进行css模块化
+
+* 1.全局污染
+* 2.命名混乱
+* 3.以来管理不彻底
+* 4.无法共享变量
+* 5.代码压缩不彻底
+>2.使用方法
+
+* 1.导入
+* 2.使用
+* 3.`：local(.normal){color:green;}` 本地使用
+* 4.`：global(.normal){color:green;}`全局使用
+>css模块化的优点
+
+* 1.所有样式都是local的，解决了命名冲突和全局污染问题
+* 2.class名生成规则配置灵活，可以此来压缩class名
+* 3.只需要引用组件的JS就能搞定组件所有的JS和CSS
+* 4.依然是CSS，几乎零成本学习
+
 ###4.JSX样式与CSS的互转
+[转换工具网址htttp://staxmanade.com/CssToReact](htttps://staxmanade.com/CssToReact)
+直接将转换后的代码，赋值写进render()内部
+定义
+`var footerVonverStyle={css转换后的代码}`
+使用
+`style={footerVonverStyle}`
+
 ###5.Ant Design样式框架介绍
+[**Google开发的Material-UI**](http://www.material-ui.com/)
+[**阿里-蚂蚁金融开发的Ant Design**](https://ant.design)
+
 ###6.Ant Dsign样式使用
+安装
+`npm install antd --save`
+引入组件
+`import {Input} from 'antd';`
+引入样式
+`import 'antd/dist/antd.css'`
+修改入口文件
+//ant-desing配置文件
+`{test: /\.css$/,loader: 'style-loader!css-loader'}`
+使用
+`<Input id="" style="" ref="" type=""/> `//自动加载样式
+##React Router 
+###1.Router概念
+* 1.demo代码的逻辑结构
+* 2.控制页面的层级关系
+* 3.单页面构建Router控制
+* 4.底层机制-[链接github介绍](https://github.com/ReactTraining/react-router)
+React state/props->Components->UI
+Router:location->Router-UI
+
+安装
+`npm install react-router --save`
+创建一个文件src/js/router.js
+```
+
+	import React from 'react';
+	impotr ReacrDOM from 'react-dom';
+	import Index from '/index/';
+	import {Router,Route,hashHistory} from 'react-router';
+	
+	export default class router extends React.Component{
+		render(){
+			returen{
+				//这里替换了之前的Index，变成了程序的入口
+				<Router history={hashHistory}>
+					<Router component={Index} path="/"></Router>
+					<Router component={List} path="list"></Router>
+				</Router>
+			};
+		};
+	}
+
+	ReactDOM.render(
+		<Index/>,document.getElementById('example'));//Index里面的就要删除了
+	
+```
+
+创建一个list.js文件
+```
+
+	import
+```
