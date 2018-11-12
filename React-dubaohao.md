@@ -1,4 +1,33 @@
-# REACT安装方式
+# REACT文档-dubaohao
+2018/11/12 10:32:52 
+##0.前言
+>**使用到的技术知识
+Js ECMAScript5 ECMAScript6 CSS HTML5
+Node.js  Webpack
+ANT Design**
+
+- 1.React虚拟DOM概念，这是React性能高效的核心算法
+- 2.React组件，理解什么是组件化
+- 3.React多组件嵌套
+- 4.JSX内置表达式
+- 5.生命周期，纵观整个React的生命周期
+- 6.React属性与事件
+	》State属性，控制着React的一切
+	》props属性
+	》事件与数据双向绑定，包含父子页面之间的参数互传
+	》可复用组件，真正让React开发快速、高效的地方
+	》组件Refs
+	》独立组件间共享Mixins
+- 7.React样式
+	》内联样式
+	》内联样式中的表达式
+	》css模块化，学习如何使用require进行样式的引用
+	》JSX样式与CSS的互转
+	》一个好用的框架-Ant Design
+- 8.React Router
+	》Route概念
+	》Router参数传递
+
 ## 1.官方快速脚手架(傻瓜式安装)
 ```
 
@@ -117,12 +146,13 @@ Chrome可以安装React Developer Tools
 
 >虚拟DOM的结构
 
-[https://github.com/Matt-Esch/virtual-dom]基于JavaScript的开源算法DIFF
+[https://github.com/Matt-Esch/virtual-dom](https://github.com/Matt-Esch/virtual-dom)基于JavaScript的开源算法DIFF
+
 
 >为什么那么快！！！
 
 每次对需要变更的模块进行更新!
-
+对DOM进行模拟，比较前后差异，如果数据有差异，统一操作DOM
 ## 5.开始书写代码,React学习
 创建文件夹  src/components
 
@@ -423,7 +453,7 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 2.关于Mixins的讨论文章：https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html
 * 3.和页面具有类似的生命周期
 
-##React样式
+##7.React样式
 ###1.内联样式
 方法一：js加载样式
 ```
@@ -440,6 +470,7 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 	//调用在return()内
 	<header style={styleComponentHeader.header}>
 ```
+
 方法二：css
 ```
 
@@ -494,12 +525,14 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 3.以来管理不彻底
 * 4.无法共享变量
 * 5.代码压缩不彻底
+
 >2.使用方法
 
 * 1.导入
 * 2.使用
 * 3.`：local(.normal){color:green;}` 本地使用
 * 4.`：global(.normal){color:green;}`全局使用
+
 >css模块化的优点
 
 * 1.所有样式都是local的，解决了命名冲突和全局污染问题
@@ -520,18 +553,23 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 [**阿里-蚂蚁金融开发的Ant Design**](https://ant.design)
 
 ###6.Ant Dsign样式使用
-安装
+>安装
+
 `npm install antd --save`
-引入组件
+>引入组件
+
 `import {Input} from 'antd';`
-引入样式
+>引入样式
+
 `import 'antd/dist/antd.css'`
-修改入口文件
+>修改入口文件
+
 //ant-desing配置文件
 `{test: /\.css$/,loader: 'style-loader!css-loader'}`
-使用
+>使用
+
 `<Input id="" style="" ref="" type=""/> `//自动加载样式
-##React Router 
+##8.React Router 
 ###1.Router概念
 * 1.demo代码的逻辑结构
 * 2.控制页面的层级关系
@@ -540,7 +578,8 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 React state/props->Components->UI
 Router:location->Router-UI
 
-安装
+>安装
+
 `npm install react-router --save`
 创建一个文件src/js/router.js
 ```
@@ -548,27 +587,80 @@ Router:location->Router-UI
 	import React from 'react';
 	impotr ReacrDOM from 'react-dom';
 	import Index from '/index/';
+	import ComponentList from '/component/list';
 	import {Router,Route,hashHistory} from 'react-router';
 	
 	export default class router extends React.Component{
 		render(){
-			returen{
+			return{
 				//这里替换了之前的Index，变成了程序的入口
 				<Router history={hashHistory}>
 					<Router component={Index} path="/"></Router>
-					<Router component={List} path="list"></Router>
+					<Router component={ComponentList} path="list"></Router>
 				</Router>
 			};
 		};
 	}
 
 	ReactDOM.render(
-		<Index/>,document.getElementById('example'));//Index里面的就要删除了
+		<Index/>,document.getElementById('example'));//Index里面的代码移动过来
 	
 ```
 
 创建一个list.js文件
 ```
 
-	import
+	import React from 'react';
+	impotr ReacrDOM from 'react-dom';
+	
+	export default class ComponentList extends  React.Component{
+		render(){
+			return{
+				<div>
+					<p>这里是列表文件</p>
+				</div>
+			};
+		};
+	}
+
 ```
+
+修改webpack的入口文件以及package.json文件
+package：
+`main：index.js`改为`root.js`
+
+webpack：
+`entry："./src/js/index.js"`改为`entry："./src/js/root.js"`
+
+>内部嵌套
+
+```
+
+	<Router component={Index} path="/">
+		<Router component={ComponentList} path="list"></Router>
+	</Router>
+
+	//这个List嵌套在Index里面的,下面代码写在Index文件中用于展示
+	<div>
+		{this.props.children}
+	</div>
+```
+>导航使用
+
+```
+
+	import {Link} from 'react-router';
+	//return()内部
+	<Link to={'/'}>首页</Link>
+```
+
+###2.Router参数传递
+>1.理解参数传递的重要意义
+
+>2.定义方法`path="list/:id`
+
+>3.导航list页面写上：`{this.props.params.id}`
+
+>4.to 等同于`<a href=""></a>`
+
+##9.项目实战！！！项目调优！！！项目部署吧！！！
