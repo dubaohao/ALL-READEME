@@ -414,7 +414,10 @@ state 更改，会立马进行刷新
     `var myDiv= document.getElementById('myDiv');`
     `ReactDOM.findDOMNode(myDiv).style.color='green'`
 * 2.方法二的定义：`<input ref="myInput" />`
-* 3.方法二的获取：`this.refs.myInput.style.color='green'`
+* 3.方法二的获取：`this.refs.myInput.
+* 
+* 
+* .color='green'`
 * 4.Refs是访问组件内部DOM节点的唯一可靠方法
 * 5.Refs会自动销毁对子组件的引用
 * 6.不要在render或者render之前对Refs进行调用
@@ -480,7 +483,8 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 ```
 >问题
 
-* css不可做复用
+* 
+* 不可做复用
 
 >知识点
 
@@ -516,8 +520,8 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 ```
 使用：在组件里可以直接引用了~
 
-`import footerCss=require（"../../css/myfooter.css");`
-`class={footer.minfooter}`
+`var footerCss=require（"../../css/myfooter.css");`
+`class={footerCss.minfooter}`
 >1.为什么要进行css模块化
 
 * 1.全局污染
@@ -664,3 +668,7 @@ webpack：
 >4.to 等同于`<a href=""></a>`
 
 ##9.项目实战！！！项目调优！！！项目部署吧！！！
+[官方网站reactstrap](http://reactstrap.github.io/)-安装使用方法
+样式： `npm install bootstrap reactstrap --save`
+
+响应式：`npm install react-responsive --save`
