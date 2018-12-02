@@ -28,7 +28,7 @@
 IDENTIFIED BY '密码';`
 
 * 超级权限
-` GRANT ALL PRIVILEGES ON *.* TO '用户名'@'主机名' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;   `
+` GRANT ALL PRIVILEGES ON '数据库名'.* TO '用户名'@'主机名' IDENTIFIED BY 'mypassword' WITH GRANT OPTION;   `
 
 * 某个数据库所有权限
 `grant rights on '数据库名'.* to user@host identified by "pass";`
