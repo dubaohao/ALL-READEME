@@ -645,4 +645,80 @@ A tool for transforming CSS with JavaScript!!!
 		}
 
 			
-			
+##Augular和Webpack
+	官方脚手架 Angular-cli
+	Angular最佳实践代码
+	所有项目依赖
+	Typescript和测试
+	环境配置
+
+	npm install @angular/cli -g
+	ng help
+	ng new ng-project
+	ng new ng-project -style=less --source-dir=src
+	ng g/generate
+	ng server
+	ng build
+	ng test
+	ng e2e
+	ng lint
+	ng eject
+	
+	ng server(Webpack Dev Server)
+		编译Less/Sass
+		编译Typescripts
+		打包JS、CSS
+		热更新
+		代码分隔
+		接口代理
+	接口代理请求
+	proxy.conf.json
+		ng server --proxy-config proxy.conf-json
+	CSS预处理
+		ng new project --sytle=less
+		ng set default.styleExt less
+	第三方依赖安装
+		npm install lodash --save
+		npm install @type/lodash --save-dev
+	热更新
+		npm install @angularclass/hmr --save -dev
+		增加脚本"hmr":"ng server --hmr -e=hmr"
+		新增hmr.ts文件，放入文件（去官网下载）
+		在main.ts引入
+		import {hmrBootStrap} form './hmr''
+		const bootstrap=() =>platformBrowserDynamic().bootstrapModule(AppModule);
+		if(envirment.hmr){
+			if(module['hot']){
+			hmrBootstrap(module,bootstrap)
+			}else{
+				console.log('no working')
+			}
+		}else{
+			bootstrap()
+		}
+	
+
+##webpack面试
+1. 概念
+	问题一：什么是webpack，和grunt、gulp区别
+		webpack是一个模块打包器，他可以递归的打包项目中的所有模块，最终生成几个打包文件，他和其他工具最大的不同，支持code-spliting 模块化（AMD、ESM、CommonJs）、全局分析。
+	问题二：什么是bundle、chunk、module？
+		bundle是webpack打包成的文件，chunk指webpack在进行模块的依赖分析的时候，代码分割出来的代码块。module是开发中的单个模块。
+	问题三：什么是loader？什么是plugin？
+		loader是用来告诉webpack如何处理转化某一类型文件，并且引入到打包文件中
+		plugin，是用来自定义webpack打包过程的方式，一个插件含有apply方法的一个对象，通过这个方法可以参与到整个webpack打包的各个流程（生命周期）。
+2. 配置
+	如何自动生成webpack配置？
+		webpack-cli、vue-cli、etc。。。。。。脚手架工具
+3. 开发环境
+	webpack-dev-server和http服务器，nginx服务器区别？
+		webpack-dev-server使用内存来存储webpack开发环境下的打包文件，并且可以使用模块热更新，他比传统的http服务器开发更加简单。
+	什么是模块热更新？
+		是webpack的一个功能，代码修改后不用刷新浏览器，是高级版的自动刷新浏览器。
+4. 优化
+	什么是长缓存？如何优化
+		浏览器在用户访问页面的时候，为了加快加载速度，会对用户访问的静态资源进行存储，但是每一次代码升级或是更新，都需要浏览器下载新代码，最方便和简单更新方式就是引入新的文件名称。在webpack中可以再output给输出文件制定chunkname，并且分离经常更新和框架代码。通过NameModulePlugin或是HashModuleIdsPlugin使再次打包文件名不变
+	什么是Tree-Shaking？CSS可以Tree-Shaking？
+		它是指代码在打包中去除那些引用了，但是没有使用的死代码。在webpack中通过UglifyJSPlugin来实现。
+		CSS使用Purify-CSS。
+	

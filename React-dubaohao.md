@@ -305,6 +305,7 @@ Chrome可以安装React Developer Tools
 ### 1.State
 
 state -> virtual dom ->Dom
+Constructor设置初始状态，记得执行super(props)
 state 更改，会立马进行刷新
 ```
 
@@ -856,3 +857,204 @@ webpack：
 }
 
 ```
+
+#React和Redux  2补充
+dispatch action reducer state 单身边数据流
+
+	Express 基于nodejs，快速、开放、极简的web开发框架
+		使用
+			app.get app.post 分别开发get和post接口
+			app.use使用模块
+			代res.send res.json res.sendfile相应不同内容
+	Express nodemon(热更新，自启动）
+		npm install express nodemon --save-dev
+
+----------------------------------------
+	MongoDB非关系性数据库
+	官网[http://docs.mongodb.com](http://docs.mongodb.com "MongoDB官网")
+		MAC:brew install mongodb
+	mongoose node链接MongoDB的库
+		npm install mongoose
+		使用
+			const mongoose = require('mongoose')
+		- Connect链接数据库
+			const DB_URL="mongodb://localhost:3306/imooc"
+			mongoose.connect(DB_URL)
+			mongoose.connection.on("'connected',functiong{
+				console.log('mongo connect success')
+			})
+			//类似于mysql的表，mongo里有文档，字段的概念，存储为json文件
+		
+		- 定义文档类型，Schema和model新建模型
+			const User = mongoose.model('user',new mongoose.Schema({
+				user:{type:String,require:true},
+				age:{type:Number,require:true}
+			}))
+		- 代一个数据库文档对应一个模型，通过模型对数据库进行操作
+		- Mongoose文档类型
+			String NUmber等数据结构
+			create remove update 分别进行增删改
+			find findOne查询数据
+
+			增删改查
+				mongod --config /usr/local/etc/momgod.conf 后台启动
+				Expres 结合mongodb
+				封装mongoose
+			增
+				User.create({
+					user:'immoc',
+					age:18
+				},functinon(err,doc){
+					if(!err){
+						console.log(doc)
+					}else{
+						console.log(err)
+					}
+				})
+			查
+				User.find({},function(err,doc){
+					res.json(doc)
+				})
+			删
+				User.remove({age:18},function(err,doc){
+					if(!err){
+						console.log("detele success")
+						User.find({},function(e,d){
+							console.log(d)
+						}
+					}
+				})
+			改
+				User.update({'user':'xiaoming'},{'$set':{age:26}},function(err,doc){
+					console.log(doc)
+				})
+
+------------------------------------------------
+	Express和mongodb结合
+		mongodb独立工具函数
+		express使用body-parser支持post参数
+		使用cookie-parser存储登录信息cookie
+
+
+#Redux
+- 专注于状态管理 和react解耦
+- 单一状态 单向数据流
+- 核心概念 store state action reducer
+
+	- store存储所有记录的状态
+	- despatch负责执行action
+	- reducer处理变化，拿到的state和action，生成新的state
+
+	reducer 新建store，随时通过store.getState获取状态
+	需要状态变更，store.dispatch(action)来修改状态
+	Reducer函数接受state和action，返回新的state，可以用store.subscribe监听每次修改
+
+		import {createStore} form 'redux'
+		function counter(state=0,action){
+			switch(action.type){
+			case '增加'
+				return state+1
+			case '减少'
+				return state-1
+			default:
+				return 10
+			}
+		}
+		const store = createStore(counter)
+		const init = store.getState()
+		console.log(init)
+
+		//派发事件, 传递action
+		store.dispatch({type:'增加'})
+		console.log(store.getState())
+
+		function listener(){
+			const current = store.getState()
+			console.log(`现在有${current}个）
+		}
+		store.subscribe(listener)
+
+##Redux和React一起使用
+- 把store.dispatch()方法传递给组件，内部可以调用修改状态
+- Subcribe订阅render函数，每次修改都要重新渲染
+- Redux相关内容，移到单独的文件index.redux.js单独管理
+
+更进一步
+处理异步、调试工具、更优雅的和React结合
+- Redux处理异步，需要redux-thunk插件
+
+		npm install redux-thunk --save
+		使用applyMiddleware开启thunk中间件
+		Action可以返回函数，使dispatch提交action
+- npm install redux-devtools-extension并且开启
+- 使用功能react-redux优雅的链接react和redux
+
+	npm install react-redux --save
+	忘记subscribe，记住reducer action dispatch即可
+	React-redux提供Provider和connect两个接口链接
+
+具体使用
+
+	- Provider组件在应用最外层，传入store即可，只用一次
+		`ReactDom.render((<Proveder store={store}><App/></Provider>) document.getElementById('root'))`
+	- Connect负责从外部获取组件需要的参数
+	- Connect可以用装饰器的方式来写，优化代码
+		- npm run eject 弹出个性化配置
+		- npm install babel-plugin-trasnform-decorators-legacy
+		- package.json里babel加上plugins配置`"plugins":["trasnform-decorators-legacy"]`
+
+#React-Router4
+	核心概念 Route、Link、Switch、BrowserRouter、Redirect
+		BrowserRouter，包裹整个应用
+		Router路由对应渲染的组件，可嵌套
+		Link跳转专用
+	url参数，Router组件参数可用冒号标识参数
+	Redirect组件跳转
+	Switch只渲染一个子组件
+#前后端联动
+使用asios发送异步请求
+	- 如何发送，端口不一致，使用proxy配置代理
+	- axios拦截器，统一loading处理
+	- redux里使用异步数据，渲染界面
+
+	npm install axios --save
+	package.json 增加 "proxy":"http://localhost:9093"//指定端口
+	import {axios} form axios
+	axios.get('/data').then(res=>{
+		console.log(res)
+		if(res.status==200){
+			this.setState({data:res.data})
+		}	
+	})
+
+	简介好用的发送请求库
+		- Axios.interceptor设置拦截器，比如全局loading
+			+ 拦截请求
+			axios.interceptor.request.use(function(config){
+				return config
+			})
+			+ 拦截响应
+			axios.interceptor.response.use(function(config){
+				return config
+			})
+		- axios.get，post发送请求，返回promise对象
+		- Redux里获取数据，然后dispath即可
+	
+##基于cookie用户验证
+express 依赖cookie-parser，
+npm install cookie-parser --save
+
+## Socket.io
+基于事件的实时双向通信库
+	基于websocket协议
+	前后端通过事件进行双向通信
+	配合express，快速开发实时应用
+Socket.io和Ajax区别
+	Ajax基于http协议，单向，实时获取数据只能轮询
+	socket.io基于websocket双向通信，后端可以主动推送数据
+	现代浏览器均支持websocket协议
+配合express
+	Io = require('socket.io')(http)
+	io.on监听事件
+	io.emit触发事件
+
