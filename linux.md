@@ -86,3 +86,6 @@ netstat命令各个参数说明如下：
 `netstat -nupl  `(UDP类型的端口)
 `netstat -ntpl  `(TCP类型的端口)
 `netstat -anp `显示系统端口使用情况
+
+##后台运行程序
+`nohup java -jar ***.jar &`
