@@ -1,10 +1,12 @@
-#CSS-dubaohao
+# CSS-dubaohao
+
 2018/11/12 21:10:09 
-##0.前言
+
+## 0.前言
 * 1.在CSS中，html中的标签元素大体被分为三种不同的类型
 * 2.CSS3: 移动端开发中 max-device-width 与 max-width 的区别
 
-##1.在CSS中，html中的标签元素大体被分为三种不同的类型： 
+## 1.在CSS中，html中的标签元素大体被分为三种不同的类型： 
 
 块状元素、内联元素(又叫行内元素)和内联块状元素。 
 
@@ -51,7 +53,7 @@
 * 2.元素的高度、宽度、行高以及顶和底边距都可设置。
 
 
-##2.CSS3: 移动端开发中 max-device-width 与 max-width 的区别
+## 2.CSS3: 移动端开发中 max-device-width 与 max-width 的区别
 
 <div id="blog_content" class="blog_content">
     <div class="iteye-blog-content-contain" style="font-size: 14px;">
@@ -231,7 +233,7 @@ device-width/ device-height (px)
 </div>
   </div>
 
-##3.a:link,a:visited,a:hover,a:active 分别是什么意思?
+## 3.a:link,a:visited,a:hover,a:active 分别是什么意思?
 1. link:连接平常的状态
 2. visited:连接被访问过之后
 3. hover:鼠标放到连接上的时候
