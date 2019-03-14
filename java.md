@@ -1,20 +1,22 @@
-#Java
+# Java
 
-##1.public类
+## 1.public类
 
 一个.java文件中，可以有多个类，包括内部类和外部类。考虑到内部类的原因，一个.java文件可以中可以有多个public类。
 但是对于外部类而言，一个.java文件必须只能有一个public类，同时这个类的类名必须和.java的文件名一致（包括大小写）。
-##2.内联函数
+
+## 2.内联函数
 
 所谓内联函数就是指函数在被调用的地方直接展开，编译器在调用时不用像一般函数那样，参数压栈，返回时参数出栈以及资源释放等，这样提高了程序执行速度。 对应Java语言中也有一个关键字final来指明那个函数是内联的。 内联不一定好，当被指定为内联的方法体很大时，展开的开销可能就已经超过了普通函数调用调用的时间，引入了内联反而降低了性能，因为在选择这个关键字应该慎重些，不过，在以后高版本的JVM中，在处理内联时做出了优化，它会根据方法的规模来确定是否展开调用。”
 
-##3.static可以用来修饰内部类,但是不可以用来修饰外部类
+## 3.static可以用来修饰内部类,但是不可以用来修饰外部类
 
 static修饰的为类成员,会随着类的加载而加载,比如静态代码块,静态成员,静态方法(这里只是加载,并没有调用)等等,可以想象一下,如果把一个Class文件中的外部类设为static,目的难道是让这个类随着应用的启动而加载吗？如果在这次使用过程中根本没有使用过这个类,那么是不是就会浪费内存。这样来说设计不合理,总而言之,设计不合理的地方,Java是不会让它存在的。
 
 而为什么内部类可以使用static修饰呢,因为内部类算是类的成员了,如果没有使用静态来修饰,那么在创建内部类的时候就需要先有一个外部类的对象,如果我们一直在使用内部类,那么内存中就会一直存在外部类的引用,而我们有时候只需要使用内部类,不需要外部类,那么还是会浪费内存,甚至会造成内存溢出。使用static修饰内部类之后,内部类在创建对象时就不需要有外部类对象的引用了。
 最终结论就是:static可以用来修饰内部类,但是不可以用来修饰外部类
-##4.java的垃圾收集机制
+
+## 4.java的垃圾收集机制
 
 java的垃圾收集机制主要针对新生代和老年代的内存进行回收，不同的垃圾收集算法针对不同的区域。所以java的垃圾收集算法使用的是分代回收。一般java的对象首先进入新生代的Eden区域，当进行GC的时候会回收新生代的区域，新生代一般采用复制收集算法，将活着的对象复制到survivor区域中，如果survivor区域装在不下，就查看老年代是否有足够的空间装下新生代中的对象，如果能装下就装下，否则老年代就执行FULL GC回收自己，老年代还是装不下，就会抛出OUtOfMemory的异常
 
@@ -34,7 +36,7 @@ JVM规范并没有讨论关于弱引用的垃圾回收，这是明确声明的�
 * 不可触及状态：当Java虚拟机执行完所有可复活对象的finalize()方法后，假如这些方法都没有使Sample对象转到可触及状态，那么Sample对象就进入不可触及状态。只有当对象处于不可触及状态时，垃圾回收器才会真正回收它占用的内存。
 notify唤醒线程，与wait()和同步锁synchronized()方法配合使用
 
-##5.内存泄漏
+## 5.内存泄漏
 
 内存泄露(Memory Leak)是指一个不再被使用的对象或者变量还在内存中占有存储空间。在C/C++语言中，内存泄露出现在开发人员忘记释放已分配的内存就会造成内存泄露。在java语言中引入垃圾回收机制，有GC负责进行回收不再使用的对象，释放内存。但是还是会存在内存泄露的问题。
 
@@ -66,7 +68,7 @@ notify唤醒线程，与wait()和同步锁synchronized()方法配合使用
     2)栈向低内存地址生长； 
     3)堆和栈相向而生，堆和栈之间有个临界点，称为stkbrk。 
 
-##7.Java运行时的数据区包括：（其中前两个是线程共享的）
+## 7.Java运行时的数据区包括：（其中前两个是线程共享的）
 
 * 1.方法区（Method Area） 存储已被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据
 * 2.堆（Heap） 存放对象实例，几乎所有对象实例都在这里分配内存
@@ -74,15 +76,15 @@ notify唤醒线程，与wait()和同步锁synchronized()方法配合使用
 * 4.本地方法栈（Native Method Stack）  与虚拟机栈了类似，不过则为虚拟机使用的到的Native方法服务。（有的虚拟机譬如Sun HotSpot虚拟机直接把本地方法栈和虚拟机栈合二为一）
 * 5.程序计数器（Program Counter Register） 可看作当前线程所执行的字节码的行号的标识器
 
-##8.System.out.println()”来输出信息，语句中的System是包名，out是类名，println是方法名????????
+## 8.System.out.println()”来输出信息，语句中的System是包名，out是类名，println是方法名????????
 System是java.lang中的类，
 out为System中的一个静态成员，out是java.io.PrintStream类的对象，
 而println()是java.io.PrintStream类的方法，所有可以调用类.静态方法.println()方法。
 
-##9.Java类成员的访问控制权限：
+## 9.Java类成员的访问控制权限：
 public > protected > 同包（default） > private
 
-##10.Java自带的三大注解：@Override  @Deprecated  @SuppressWarnings()
+## 10.Java自带的三大注解：@Override  @Deprecated  @SuppressWarnings()
 
 * 1.Override 注解
 指明被注解的方法需要覆写超类中的方法.
@@ -95,7 +97,8 @@ public > protected > 同包（default） > private
 >deprecation修饰符则是对java中已经过时或者废弃方法的警告。
 @SuppressWarnings(“deprecation”)的功能是屏蔽不赞同（就是过时废弃的意思）使用的类和方法的警告
 
-##11.抽象与继承
+## 11.抽象与继承
+
 ```
 
 	//结果：Animal能编译，Cat不能编译
@@ -120,7 +123,7 @@ public > protected > 同包（default） > private
 3）如果一个类继承于一个抽象类，则子类必须实现父类的抽象方法。如果子类没有实现父类的抽象方法，则必须将子类也定义为为abstract类。
 在其他方面，抽象类和普通的类并没有区别。
 
-##12.Java 中构造器、初始化块、静态初始化块的执行顺序。
+## 12.Java 中构造器、初始化块、静态初始化块的执行顺序。
 
 * 静态初始化块 > 初始化块 > 构造器
 * 父类 > 子类
@@ -161,8 +164,9 @@ public > protected > 同包（default） > private
 	 class B
 ```
 
-##13.依赖注入和控制反转是同一概念：
+## 13.依赖注入和控制反转是同一概念：
 依赖注入和控制反转是对同一件事情的不同描述，从某个方面讲，就是它们描述的角度不同。依赖注入是从应用程序的角度在描述，可以把依赖注入描述完整点：应用程序依赖容器创建并注入它所需要的外部资源；而控制反转是从容器的角度在描述，描述完整点：容器控制应用程序，由容器反向的向应用程序注入应用程序所需要的外部资源。
+
 >Ioc是控制反转，将对象的创建和初始化，销毁就给容器来完成
 
 ##14.管道
@@ -171,14 +175,14 @@ public > protected > 同包（default） > private
 2.可以多个进行进行读写操作，但是不能同时写，可以同时读。
 3.匿名管道只能单向，命名管道可以双向。
 
-##15.外部类修饰符
+## 15.外部类修饰符
 
 * **public（访问控制符）**，将一个类声明为公共类，它可以被任何对象访问，一个程序的主类必须是公共类。
 * **default（访问控制符）**，类只对包内可见，包外不可见。
 * **abstract（非访问控制符）**，将一个类声明为抽象类，抽象类不能用来实例化对象，声明抽象类的唯一目的是为了将来对该类进行扩充，抽象类可以包含抽象方法和非抽象方法。
 * **final（非访问控制符）**，将一个类生命为最终（即非继承类），表示它不能被其他类继承。
 
-##16.内部类
+## 16.内部类
 
 在Java中，可以将一个类定义在另一个类里面或者一个方法里边，这样的类称为内部类，广泛意义上的内部类一般包括四种：**成员内部类，局部内部类，匿名内部类，静态内部类** 。
 
@@ -216,7 +220,7 @@ public > protected > 同包（default） > private
 
 * （2）不能使用外部类的非static成员变量或者方法。
 
-##17.Java主要分为字节流和字符流
+## 17.Java主要分为字节流和字符流
 **字节流：**
 InputStream 
 |-- FileInputStream (基本文件流） 
@@ -231,7 +235,8 @@ Writer
 |-- OutputStreamWriter (char->byte 桥梁） 
 |-- BufferedWriter 
 |-- PrintWriter （常用）
-##18.MAP
+
+## 18.MAP
 HashMap,TreeMap是线程不安全的。 
 HashTable 和 ConcurrentHashMap 都是线程安全的。
 同时Collection类还提供了synchronized()方法，使得线程安全。
@@ -242,50 +247,56 @@ HashTable 和 ConcurrentHashMap 都是线程安全的。
 
 Hashtable线程安全，但效率低，因为是Hashtable是使用synchronized的，所有线程竞争同一把锁；
 ConcurrentHashMap不仅线程安全而且效率高，因为它包含一个segment数组，将数据分段存储，给每一段数据配一把锁，也就是所谓的锁分段技术
-为什么HashMap不是线程安全的？   
+
+> 为什么HashMap不是线程安全的？   
+
 1、如果多个线程同时使用put方法添加元素，而且假设正好存在两个put的key发生了碰撞(根据hash值计算的bucket一样)，那么根据HashMap的实现，这两个key会添加到数组的同一个位置，这样最终就会发生其中一个线程的put的数据被覆盖。
 2、如果多个线程同时检测到元素个数超过数组大小* loadFactor，这样就会发生多个线程同时对Node数组进行扩容，都在重新计算元素位置以及复制数据，但是最终只有一个线程扩容后的数组会赋给table，也就是说其他线程的都会丢失，并且各自线程put的数据也丢失。
-hashMap实现线程安全：
+
+> hashMap实现线程安全：
+
 1、//Hashtable<String, String> hashtable =newHashtable<>();
 
 2、//synchronizedMap<String, String> synchronizedHashMap = Collections.synchronizedMap(new HashMap<String, String>());
 
 3、//ConcurrentHashMap<String, String> concurrentHashMap = new ConcurrentHashMap<>();
 
-##19.方法的重写（override）两同两小一大原则：
-	方法名相同，参数类型相同
-	子类返回类型小于等于父类方法返回类型，
-	子类抛出异常小于等于父类方法抛出异常，
-	子类访问权限大于等于父类方法访问权限。
+## 19.方法的重写（override）两同两小一大原则：
 
-* 详细的说明为：
+	> **方法名相同，参数类型相同，**
+	**子类返回类型小于等于父类方法返回类型，**
+	**子类抛出异常小于等于父类方法抛出异常，**
+	**子类访问权限大于等于父类方法访问权限。**
+
+### 详细的说明为：
 
 重写是子类对父类的允许访问的方法的实现过程进行重新编写, 返回值和形参都不能改变。 即外壳不变，核心重写！
 重写的好处在于子类可以根据需要，定义特定于自己的行为。 也就是说子类能够根据需要实现父类的方法。
 重写方法不能抛出新的检查异常或者比被重写方法申明更加宽泛的异常。例如： 父类的一个方法申明了一个检查异常IOException，但是在重写这个方法的时候不能抛出Exception异常，因为Exception是IOException的父类，只能抛出IOException的子类异常。
 
-* 方法的重写规则
+### 方法的重写规则
 
-1）参数列表必须完全与被重写方法的相同；
-2）返回类型必须完全与被重写方法的返回类型相同；（备注:这条信息是标准的重写方法的规则,但是在java 1.5 版本之前返回类型必须一样,1.5(包含)j 版本之后ava放宽了限制,返回类型必须小于或者等于父类方法的返回类型 ）。才有了
-子类返回类型小于等于父类方法返回类型。在java里面这个怎么样都是正确的,请小伙伴谨记。
-3）访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。
-4）父类的成员方法只能被它的子类重写。
-5）声明为final的方法不能被重写。
-6）声明为static的方法不能被重写，但是能够被再次声明。
-7）子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。
-8）子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。
-9）重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。
-10）构造方法不能被重写。
-11）如果不能继承一个方法，则不能重写这个方法。
+- 1）参数列表必须完全与被重写方法的相同；
+- 2）返回类型必须完全与被重写方法的返回类型相同；（备注:这条信息是标准的重写方法的规则,但是在java 1.5 版本之前返回类型必须一样,1.5(包含)j 版本之后ava放宽了限制,返回类型必须小于或者等于父类方法的返回类型 ）。才有了子类返回类型小于等于父类方法返回类型。在java里面这个怎么样都是正确的,请小伙伴谨记。
+- 3）访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。
+- 4）父类的成员方法只能被它的子类重写。
+- 5）声明为final的方法不能被重写。
+- 6）声明为static的方法不能被重写，但是能够被再次声明。
+- 7）子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。
+- 8）子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。
+- 9）重写的方法能够抛出任何非强制异常，无论被重写的方法是否抛出异常。但是，重写的方法不能抛出新的强制性异常，或者比被重写方法声明的更广泛的强制性异常，反之则可以。
+- 10）构造方法不能被重写。
+- 11）如果不能继承一个方法，则不能重写这个方法。
 
-##20.session
+## 20.session
+
 * 1.session用来表示用户会话，session对象在服务端维护，一般tomcat设定session生命周期为30分钟，超时将失效，也可以主动设置无效； 
 * 2.cookie存放在客户端，可以分为内存cookie和磁盘cookie。内存cookie在浏览器关闭后消失，磁盘cookie超时后消失。当浏览器发送请求时，将自动发送对应cookie信息，前提是请求url满足cookie路径； 
 * 3.可以将sessionId存放在cookie中，也可以通过重写url将sessionId拼接在url。因此可以查看浏览器cookie或地址栏url看到sessionId； 
 * 4.请求到服务端时，将根据请求中的sessionId查找session，如果可以获取到则返回，否则返回null或者返回新构建的session，老的session依旧存在
 
-##21.隐藏域
+## 21.隐藏域
+
 * 1 .隐藏域在页面中对于用户是不可见的，在表单中插入隐藏域的目的在于收集或发送信息，以利于被处理表单的程序所使用。浏览者单击发送按钮发送表单的时候，隐藏域的信息也被一起发送到服务器。
 * 2 .有些时候我们要给用户一信息，让他在提交表单时提交上来以确定用户身份，如sessionkey，等等．当然这些东西也能用cookie实现，但使用隐藏域就简单的多了．而且不会有浏览器不支持，用户禁用cookie的烦恼。
 * 3 .有些时候一个form里有多个提交按钮，怎样使程序能够分清楚到底用户是按那一个按钮提交上来的呢？我们就可以写一个隐藏域，然后在每一个按钮处加上 onclick="document.form.command.value="xx""然后我们接到数据后先检查command的值就会知道用户是按的 那个按钮提交上来的。
@@ -293,32 +304,35 @@ hashMap实现线程安全：
 * 5.javascript不支持全局变量，但有时我们必须用全局变量，我们就可以把值先存在隐藏域里，它的值就不会丢失了。
 * 6.还有个例子，比如按一个按钮弹出四个小窗口，当点击其中的一个小窗口时其他三个自动关闭．可是IE不支持小窗口相互调用，所以只有在父窗口写个隐藏域，当小窗口看到那个隐藏域的值是close时就自己关掉。
 
-##22.Java保留关键字
+## 22.Java保留关键字
+
 * 1.Java 关键字列表 (依字母排序 共50组)：
-abstract, assert, boolean, break, byte, case, catch, char, class, **const（保留关键字）**, 
-continue, default, do, double, else, enum, extends, final, finally, float, 
-for,** goto（保留关键字）**, if, implements, import, instanceof, int, interface, long, native, 
-new, package, private, protected, public, return, short, static, strictfp, super, 
-switch, synchronized, this, throw, throws, transient, try, void, volatile, while
-![](http://uploadfiles.nowcoder.net/images/20160129/828061_1454054455847_8A5F006FFD4CE801C8E888EC3BC68361)
+  abstract, assert, boolean, break, byte, case, catch, char, class, **const（保留关键字）**, 
+  continue, default, do, double, else, enum, extends, final, finally, float, 
+  for,** goto（保留关键字）**, if, implements, import, instanceof, int, interface, long, native, 
+  new, package, private, protected, public, return, short, static, strictfp, super, 
+  switch, synchronized, this, throw, throws, transient, try, void, volatile, while
+  ![img](F:\Code\github\assets\828061_1454054455847_8A5F006FFD4CE801C8E888EC3BC68361.png)
 
 * 2.保留字列表 (依字母排序 共14组)，Java保留字是指现有Java版本尚未使用，但以后版本可能会作为关键字使用：
-byValue, cast, false, future, generic, inner, operator, outer, rest, true, 
-var, **goto （保留关键字）** , **const （保留关键字）** , null
+  byValue, cast, false, future, generic, inner, operator, outer, rest, true, 
+  var, **goto （保留关键字）** , **const （保留关键字）** , null
 
-##22.Applet
+## 22.Applet
 
-当用户访问这样的网页时，Applet被下载到用户的计算机上执行，但前提是用户使用的是支持Java的网络浏览器。由于Applet是在用户的计算机上执行的，所以它的执行速度不受网络带宽或者Modem存取速度的限制，用户可以更好地欣赏网页上Applet产生的多媒体效果。 
+​    当用户访问这样的网页时，Applet被下载到用户的计算机上执行，但前提是用户使用的是支持Java的网络浏览器。由于Applet是在用户的计算机上执行的，所以它的执行速度不受网络带宽或者Modem存取速度的限制，用户可以更好地欣赏网页上Applet产生的多媒体效果。 
 
-在Java Applet中，可以实现图形绘制，字体和颜色控制，动画和声音的插入，人机交互及网络交流等功能。 Applet还提供了名为抽象窗口工具箱（Abstract Window Toolkit，AWT）的窗口环境开发工具。 AWT利用用户计算机的GUI元素，可以建立标准的图形用户界面，如窗口、按钮、滚动条等等。目前，在网络上有非常多的Applet范例来生动地展现这些功能，读者可以去调阅相应的网页以观看它们的效果。 
+​    在Java Applet中，可以实现图形绘制，字体和颜色控制，动画和声音的插入，人机交互及网络交流等功能。 Applet还提供了名为抽象窗口工具箱（Abstract Window Toolkit，AWT）的窗口环境开发工具。 AWT利用用户计算机的GUI元素，可以建立标准的图形用户界面，如窗口、按钮、滚动条等等。目前，在网络上有非常多的Applet范例来生动地展现这些功能，读者可以去调阅相应的网页以观看它们的效果。 
 
-Applet小应用程序的实现主要依靠java.applet包中的Applet类。与一般的应用程序不同，Applet应用程序必须嵌入在HTML页面中，才能得到解释执行；同时Applet可以从Web页面中获得参数，并和Web页面进行交互。 
+​    Applet小应用程序的实现主要依靠java.applet包中的Applet类。与一般的应用程序不同，Applet应用程序必须嵌入在HTML页面中，才能得到解释执行；同时Applet可以从Web页面中获得参数，并和Web页面进行交互。 
 
-Applet是一种Java的小程序，它通过使用该Applet的HTML文件，由支持Java的网页浏览器下载运行。也可以通过java开发工具的appletviewer来运行。Applet 程序离不开使用它的HTML文件。
+​    Applet是一种Java的小程序，它通过使用该Applet的HTML文件，由支持Java的网页浏览器下载运行。也可以通过java开发工具的appletviewer来运行。Applet 程序离不开使用它的HTML文件。
 
 这个HTML文件中关于Applet的信息至少应包含以下三点： 
-1)字节码文件名(编译后的Java文件，以.class为后缀)
-2)字节码文件的地址 
-3)在网页上显示Applet的方式。 
+
+- 1)字节码文件名(编译后的Java文件，以.class为后缀)
+- 2)字节码文件的地址 
+- 3)在网页上显示Applet的方式。 
+
 一个HTML文件增加Applet有关的内容只是使网页更加富有生气，如添加声音、动画等这些吸引人的特征，它并不会改变HTML文件中与Applet无关的元素。
 

@@ -1,6 +1,6 @@
-#网络-dubaohao
+# 网络-dubaohao
 
-##1.natapp
+## 1.natapp
 `natapp -authtoken=7686061e7ed77645`
 
 ##2.重启httpd服务
@@ -23,8 +23,9 @@
 
 `service httpd start`
 
-##2.查询端口号，并关闭
-###1.window
+## 2.查询端口号，并关闭
+### 1.window
+
 >1.列出所有端口号
 
 `netstat -ano`
@@ -39,7 +40,7 @@
 
 `taskkill /f /t /im 程序名.exe`
 
-###3.linux
+### 3.linux
 
 
 netstat命令各个参数说明如下：
@@ -87,5 +88,5 @@ netstat命令各个参数说明如下：
 `netstat -ntpl  `(TCP类型的端口)
 `netstat -anp `显示系统端口使用情况
 
-##后台运行程序
+## 后台运行程序
 `nohup java -jar ***.jar &`

@@ -1,7 +1,8 @@
-#mysql-duubaohao
-##创建数据库
+# mysql-duubaohao
+## 创建数据库
+
 > 登录
- 
+
 `mysql -u root -p`
 
 * 输入密码
@@ -44,7 +45,8 @@ IDENTIFIED BY '密码';`
 或者
 `revoke all on *.* from tester;--取消用户所有数据库（表）的所有权限`
 
-##Table 字段
+## Table 字段
+
 >不为空
 
 `NOT NULL `
@@ -62,7 +64,7 @@ IDENTIFIED BY '密码';`
 `create_date  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'`
 `update_date  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'`
 
-##sql 创建表、删除表 增加字段 删除字段操作
+## sql 创建表、删除表 增加字段 删除字段操作
 
 	新建表：
 	create table [表名]
@@ -136,8 +138,9 @@ IDENTIFIED BY '密码';`
 	set rs=conn.execute(sql)
 	
 	response.write rs(\"dida\")\'返回一个数值，0代表没有，1代表存在
-	
-	
+
+
+​	
 	判断表的存在:
 	select * from sysobjects where id = object_id(N\'[dbo].[tablename]\') and OBJECTPROPERTY(id, N\'IsUserTable\') = 1
 	

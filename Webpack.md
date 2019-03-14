@@ -1,9 +1,10 @@
-#Webpack
-	2018/12/25 21:26:28 
-	作者Tobias Koppers
-	GWT工具（Google Web Toolkit）代码分隔工具
-	Instagram团队
+# Webpack
+​	2018/12/25 21:26:28 
+​	作者Tobias Koppers
+​	GWT工具（Google Web Toolkit）代码分隔工具
+​	Instagram团队
 **本文档基于Webpack3.1**
+
 ## 为什么要构建？
 * 开发分工变化
 * 框架的变化
@@ -18,18 +19,20 @@ Js库 -> MVC -> MV*
 	BackBone.js+UndersScore.js+ jQuery.js
 	Angular React Vue代表性三大框架
 
-###为什么前端需要构建
+### 为什么前端需要构建
+
 * 开发复杂化
 * 框架去中心化
 * 语言编译化
 * 开发模块化
 
-###为什么Webpack？
+### 为什么Webpack？
+
 - Vue-cli /React-satart /Angular-cli
 - Code-splitting代码分隔
 - 天生模块化
 
-###Js模块化
+### Js模块化
 	- 命名空间
 		库名.类别名.方法名
 	- Common.js （推荐，主流）
@@ -69,47 +72,50 @@ Js库 -> MVC -> MV*
 		AMCSS
 		BEM
 		CSS Modules
-###命令行工具
-	Node + Npm
-	Webpack
-	Mac （Oh My Zsh/iTerm2）
-	
+### 命令行工具
+​	Node + Npm
+​	Webpack
+​	Mac （Oh My Zsh/iTerm2）
+​	
+
 	npm install webpack -g
-###Webpack 核心概念
-	Entry
-		代码的入口
-		打包的入口
-		单个或多个页面应用
-	Ouput
-		打包成的文件bundle
-		一个或多个
-		自定义规则
-			output：{filename:'[name]'.min.[hash:5].js}
-		配合CDN
-	Loaders
-		处理文件
-		转化为模块
-		编译相关：babel-loader ts-loader
-		样式相关：style-loader css-loader less-loader postcss-loader
-		文件相关：file-loader url-loader
-	Plugins 插件系统
-		参与打包的整个过程
-		打包优化和压缩
-		配置编译时的变量
-		极其灵活的
-		优化相关：CommonsChunkPlugin UglifyjsWebpackPlugin
-		功能相关:ExtractTextWebpackPlugin HtmlModuleReplacementPlugin CopyWebpackPlugin
-####名词
-	
+### Webpack 核心概念
+​	Entry
+​		代码的入口
+​		打包的入口
+​		单个或多个页面应用
+​	Ouput
+​		打包成的文件bundle
+​		一个或多个
+​		自定义规则
+​			output：{filename:'[name]'.min.[hash:5].js}
+​		配合CDN
+​	Loaders
+​		处理文件
+​		转化为模块
+​		编译相关：babel-loader ts-loader
+​		样式相关：style-loader css-loader less-loader postcss-loader
+​		文件相关：file-loader url-loader
+​	Plugins 插件系统
+​		参与打包的整个过程
+​		打包优化和压缩
+​		配置编译时的变量
+​		极其灵活的
+​		优化相关：CommonsChunkPlugin UglifyjsWebpackPlugin
+​		功能相关:ExtractTextWebpackPlugin HtmlModuleReplacementPlugin CopyWebpackPlugin
+
+#### 名词
+
 	Chunk 代码块
 	Bundle 打包过的一束
 	Module 模块
-	
-###Webpack使用
-	Webpack命令
-	Webpack配置
-	第三方脚手架
-	
+
+### Webpack使用
+​	Webpack命令
+​	Webpack配置
+​	第三方脚手架
+​	
+
 	webpack -h 查看所有命令
 	webpack -v 查看版本
 	webpack/webpack <entry> [<entry>] <output>
@@ -128,22 +134,22 @@ webpack-cli init webpack-addons-demo
 
 	webpack 
 	webpack --config webpack.conf.dev.js
-####脚手架
+#### 脚手架
 
 	Vue-cli
 	Angular-cli
 	React-starter
-###打包JS
+### 打包JS
 
 	webpack entry<entry> output
 	webpack --config webpack.conf.js
-	
-####编译ES6 、7
-	Babel 
-	Babel-loader
-	npm install babel-loader babel-core --save -dev
-	Babel Presets
-	npm installl babel-preset-env --save -dev
+
+#### 编译ES6 、7
+​	Babel 
+​	Babel-loader
+​	npm install babel-loader babel-core --save -dev
+​	Babel Presets
+​	npm installl babel-preset-env --save -dev
 插件
 
 	Babel Polyfill
@@ -167,23 +173,24 @@ Js的超集
 	tsconfig.json专门的配置文件
 	webpack.config.js
 	tsconfig.json
-
+	
 	配置选项
 		-》官网
 	常用选项
 		compilerOption
 		include
 		exclude
-
+	
 	声明文件(错误提示）
 	npm install @types/lodash
 	npm install @types/vue
-
+	
 	|_->替换品Typings
 	npm install typings
 	typings install lodash
 	会多一个配置文件和目录
 ### 提取公用代码
+
 	减少代码冗余
 	提高加载速度
 	CommonsChunkPlugin
@@ -202,33 +209,39 @@ Js的超集
 	options.children子模块查找依赖
 	options.deepChildren
 	options.async 创建一个异步的公共代码流
-
+	
 	场景
 		单页应用
 		单页应用+第三方依赖
 		单页应用+第三方依赖+webpack生成代码
-###代码分隔和懒加载
-	- webpack methods 内置方法
-		- require.ensure
-			[]:dependencies
-			callback
-			errorCallback
-			chunkName
-		- require.include
-	- ES2015 Loader spec
-		System.import()->import
-		回调，import()—>Promise
-		import().then()
-####代码分隔
-	分离业务代码和第三方依赖
-	分离业务代码和业务公共代码和第三方依赖
-	分离首次加载和访问后加载的代码
+### 代码分隔和懒加载
+ -  webpack methods 内置方法
+     - require.ensure
+        []:dependencies
+        	callback
+        	errorCallback
+        	chunkName
+        - require.include
+
+     ES2015 Loader spec
+     System.import()->import
+     回调，import()—>Promise
+     import().then()
+
+     
+
+#### 代码分隔
+
+分离业务代码和第三方依赖
+分离业务代码和业务公共代码和第三方依赖
+分离首次加载和访问后加载的代码
+
 ### 处理CSS
 	引入
 	CSS modules
 	配置less/sass
 	提取css代码
-
+	
 	- style-loader 创建标签，加入dom中
 	css-loader js如何import一个进来
 	
@@ -241,7 +254,7 @@ Js的超集
 		insertInto(插入到dom)
 		singleton(是否只使用一个style标签)
 		transform(转化，浏览器环境下，插入页面前)
-
+	
 	-CSS loader
 		options
 			alias(解析的别名)
@@ -253,53 +266,55 @@ Js的超集
 			：global
 			compose
 			compose...from path
-###配置Less/Sass
-	npm install less-loader less --save -dev
-	npm install sass-loader node-sass --save -dev
-###提起CSS
-	extract-loader
-	ExtractTextWebpackPlugin(主流）插件
-	
+### 配置Less/Sass
+​	npm install less-loader less --save -dev
+​	npm install sass-loader node-sass --save -dev
+
+### 提起CSS
+​	extract-loader
+​	ExtractTextWebpackPlugin(主流）插件
+​	
+
 	npm install extract-text-webpack-plugin --save-dev
 	需要引用，然后配置
 	var ExtractTextWebpackPlugin=require('extract-text-webpack-plugin')。。。
-###PostCSS
+### PostCSS
 A tool for transforming CSS with JavaScript!!!
 
 	PostCSS
 	Autoprefixer   	增加前缀，不同浏览器
 	CSS-nano		压缩
 	CSS-next		使用css 新语法：变量，选择器，动态计算。。。
-
+	
 	安装
 	postcss
 	postcss-loader
 	Autoprefixer
 	postcss-cssnano
 	postcss-cssnext
-
+	
 	浏览器兼容Broswerslist
 	所有插件共用
 		package.json
 		.browserslist
-
+	
 	其他插件
 	postcss-import
 	postcss-url
 	postcss-assets
-###Tree Shaking
-	去除没有使用的代码
-	Js Tree Shaking
-	CSS Tree Shaking
+### Tree Shaking
+​	去除没有使用的代码
+​	Js Tree Shaking
+​	CSS Tree Shaking
 
 	使用场景
 		常规优化
 		引入第三方库的某一功能
-
+	
 	Purify CSS
 	npm install purify-css --save -dev
 	npm install glob-all --save-dev
-
+	
 	options
 		path:glob.sync([])
 ### 文件处理
@@ -318,7 +333,9 @@ A tool for transforming CSS with JavaScript!!!
 	url-loader
 	img-loader
 	postcss-sprites
-###Html in Webpack
+
+### Html in Webpack
+
 - 自动生成HTML
 - 场景优化
 
@@ -335,16 +352,15 @@ A tool for transforming CSS with JavaScript!!!
 		options
 			attrs:['img：src','img:data-src']
 
-###配合优化
+### 配合优化
 提前载入webpack加载代码
 	inline-manifest-webpack-pligin
 	html-webpack-inline-chunk-plugin
 
-
-##Webpack开发环境
+## Webpack开发环境
 
 		npm install clean-webpack-plugin --save -dev 清楚之前的打包文件
-
+	
 	- webpack watch mode
 		webpack-watch 或者webpack -w
 		webpack -w --progress --display-reason --color可以看到打包过程，进度
@@ -372,30 +388,31 @@ A tool for transforming CSS with JavaScript!!!
 	- express +webpack-dev-middleware
 		下面单独有一段落讲
 
-###http-proxy-middleware
-		options
-			target 地址
-			changeOrigin 为True
-			headers
-			logLevel 设置debug，控制台可以看到代理信息
-			pathRewrite 重新配置API路径，指向原来API地址
+### http-proxy-middleware
+​		options
+​			target 地址
+​			changeOrigin 为True
+​			headers
+​			logLevel 设置debug，控制台可以看到代理信息
+​			pathRewrite 重新配置API路径，指向原来API地址
 	- Module Hot Reloading
 		保持应有的数据状态
 		节省调试时间
 		样式调试更快
 		
+
 		devServer.hot置为true
 		webpack.HotModuleReplacementPlugin
 		webpack.NameModulesPlugin
-
+	
 		module.hot
 		module.hot.accept
 		module.hot.decline
 
-###Source Map 调试
-	 对打包的代码和源代码做一个映射
-	Js Source Map
-	CSS Source Map
+### Source Map 调试
+​	 对打包的代码和源代码做一个映射
+​	Js Source Map
+​	CSS Source Map
 
 	Devtool(7个值）
 		webpack.SourceMapDevToolPlugin
@@ -409,22 +426,22 @@ A tool for transforming CSS with JavaScript!!!
 		source-map
 		hidden-source-map
 		nosource-source-map
-
+	
 	css还需要开启相应的loader
 		css-loader.option.sourcemap
 		less-loader.option.sourcemap
 		csass-loader.option.sourcemap
 
-###EsLint检查代码格式
-	eslint
-	eslint-loader
-	eslint-plugin-html
-	eslint-friendly-formatter
+### EsLint检查代码格式
+​	eslint
+​	eslint-loader
+​	eslint-plugin-html
+​	eslint-friendly-formatter
 
 	webpack.config.js配置
 	.eslintrc.*
 	package.json中的dslintConfig
-
+	
 	配置ESLint
 	推荐Javascript Standard Style
 	安装 eslint-config-standard
@@ -432,7 +449,7 @@ A tool for transforming CSS with JavaScript!!!
 		eslint-plugin-import
 		eslint-plugin-node
 		eslint-config-xxx
-
+	
 	eslint-loader
 		options.failOnWarning
 		options.failOnError
@@ -440,47 +457,46 @@ A tool for transforming CSS with JavaScript!!!
 		options.ouputReport
 	devServer.overlay 控制台看到信息
 
-###开发环境和生产环境
-	开发环境
-		模块热更新
-		souceMap
-		接口代理
-		代码规范检查
-	生产环境
-		提取公共代码
-		压缩混淆
-		文件压缩或是base64编码
-		去除无用代码
-	共同点
-		同样的入口
-		同样的代码处理（loader处理）
-		同样的解析配置
-	如何区分这两个环境呢？？？
-		webpack-merge
-		webpack.dev.conf.js
-		webpack.prod.conf.js
-		webpack.common.conf.js
-		需要分别配置
+### 开发环境和生产环境
+​	开发环境
+​		模块热更新
+​		souceMap
+​		接口代理
+​		代码规范检查
+​	生产环境
+​		提取公共代码
+​		压缩混淆
+​		文件压缩或是base64编码
+​		去除无用代码
+​	共同点
+​		同样的入口
+​		同样的代码处理（loader处理）
+​		同样的解析配置
+​	如何区分这两个环境呢？？？
+​		webpack-merge
+​		webpack.dev.conf.js
+​		webpack.prod.conf.js
+​		webpack.common.conf.js
+​		需要分别配置
 
+### 使用middleware搭建开发环境
+​	Express 或者Koa
+​	webpack-dev-middleware
+​	webpack-hot-middleware
+​	http-proxy-middleware
+​	connect-history-ap-fallback
+​	opn
+## 打包结果分析
+​	Offical Analyse Tool
+​		webpack --profile --json > stats.json
+​		webpack --profile --json | Out-file'stats.json' -Encoding OEM
+​	webpack-bundle-analyzer
+​		插件
+​			BundleAnalyzerPlugin
+​		命令行
+​			webpack-bundle-analyzer stats.json
 
-###使用middleware搭建开发环境
-	Express 或者Koa
-	webpack-dev-middleware
-	webpack-hot-middleware
-	http-proxy-middleware
-	connect-history-ap-fallback
-	opn
-##打包结果分析
-	Offical Analyse Tool
-		webpack --profile --json > stats.json
-		webpack --profile --json | Out-file'stats.json' -Encoding OEM
-	webpack-bundle-analyzer
-		插件
-			BundleAnalyzerPlugin
-		命令行
-			webpack-bundle-analyzer stats.json
-
-###打包速度优化
+### 打包速度优化
 文件多？依赖多？页面多？
 
 	方法一：分开vender和app【区分第三方代码和开发代码】
@@ -502,13 +518,14 @@ A tool for transforming CSS with JavaScript!!!
 		cache-loader
 		升级node
 		升级webpack
-		
-####长缓存有缘
-	场景：改变APP代码 vendor变化
-	解决：提取vender
-		hash->chunkhash
-		提取webpack runtime
-	
+
+#### 长缓存有缘
+​	场景：改变APP代码 vendor变化
+​	解决：提取vender
+​		hash->chunkhash
+​		提取webpack runtime
+​	
+
 	场景：引入新模块，模块顺序变化，vender hash变化
 	解决：NamedChunksPlugin
 		NameModulesPlugin
@@ -522,7 +539,7 @@ A tool for transforming CSS with JavaScript!!!
 		使用NamedChunksPlugin
 		NameModulesPlugin
 		动态模块给定模块名称
-###多页面应用
+### 多页面应用
 多入口entry
 多页面html
 每个页面有不同的chunk
@@ -541,44 +558,45 @@ A tool for transforming CSS with JavaScript!!!
 	parallel-webpack
 		parallel-webpack --watch
 		parallel-webpack --config
-
+	
 	单配置
 	优点：可共享各个entry之间共用代码
 	缺点：打包速度比较慢
 		输出的内容比较复杂
-##webpacket-Vue
-	官方脚手架Vue-cli
-		npm install vue-cli -g
-		vue --help
-		vue list 查看项目模板
-			simple
-			webpack
-			webpack-simple
-			browserify
-			browserify-sample
-		vue init <template name> <project name>
-		vue init <git repo> <project name>
-		Vue webpack
-				项目结构
-				基本命令
-				开发配置
-				工具配置
-		运行项目自动打开浏览器
-		config下index.js文件修改 autoOpenBrowser：true；
-		port也可以修改
- 
+## webpacket-Vue
+​	官方脚手架Vue-cli
+​		npm install vue-cli -g
+​		vue --help
+​		vue list 查看项目模板
+​			simple
+​			webpack
+​			webpack-simple
+​			browserify
+​			browserify-sample
+​		vue init <template name> <project name>
+​		vue init <git repo> <project name>
+​		Vue webpack
+​				项目结构
+​				基本命令
+​				开发配置
+​				工具配置
+​		运行项目自动打开浏览器
+​		config下index.js文件修改 autoOpenBrowser：true；
+​		port也可以修改
+
 	项目模板
 	配置文件
-##webpack-react
-	官方脚手架 create-react-app
-		react-scripts
-		npm install create-react-app -g
-		npx create-react-app my-project
-		npm start 启动服务器
-		npm test 测试用例
-		npm run build
-		npm run eject
-	
+## webpack-react
+​	官方脚手架 create-react-app
+​		react-scripts
+​		npm install create-react-app -g
+​		npx create-react-app my-project
+​		npm start 启动服务器
+​		npm test 测试用例
+​		npm run build
+​		npm run eject
+​	
+
 		支持ES6 和JSX
 		支持动态引入import
 		支持Fetch （ployfill）
@@ -586,18 +604,18 @@ A tool for transforming CSS with JavaScript!!!
 		支持postcss
 		支持eslint
 		支持测试
-
+	
 		不支持React Hot-reloading
 		弱支持Css预处理器
-
+	
 	自定义配置
 	npm run eject后
 	根目录下创建.env.local文件
 		PORT=8080
-
+	
 	proxy配置
 		package.joson
-
+	
 		"proxy":{
 			"/api":{
 				"target":"https://m.weibo.cn"
@@ -644,13 +662,13 @@ A tool for transforming CSS with JavaScript!!!
 			});
 		}
 
-			
-##Augular和Webpack
-	官方脚手架 Angular-cli
-	Angular最佳实践代码
-	所有项目依赖
-	Typescript和测试
-	环境配置
+
+## Augular和Webpack
+​	官方脚手架 Angular-cli
+​	Angular最佳实践代码
+​	所有项目依赖
+​	Typescript和测试
+​	环境配置
 
 	npm install @angular/cli -g
 	ng help
@@ -696,9 +714,9 @@ A tool for transforming CSS with JavaScript!!!
 		}else{
 			bootstrap()
 		}
-	
 
-##webpack面试
+## webpack面试
+
 1. 概念
 	问题一：什么是webpack，和grunt、gulp区别
 		webpack是一个模块打包器，他可以递归的打包项目中的所有模块，最终生成几个打包文件，他和其他工具最大的不同，支持code-spliting 模块化（AMD、ESM、CommonJs）、全局分析。

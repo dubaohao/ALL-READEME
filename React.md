@@ -1,13 +1,17 @@
 # REACT文档-dubaohao
 2018/11/12 10:32:52 
-##0.前言
+
+## 0.前言
+
 >**使用到的技术知识
 Js ECMAScript5 ECMAScript6 CSS HTML5
 Node.js  Webpack
 ANT Design**
 
 <hr>
-><b>视图层框架+组件化+JSX表达式+虚拟DOM</b>
+
+> 视图层框架+组件化+JSX表达式+虚拟DOM
+
 
 - 1.React虚拟DOM概念，这是React性能高效的核心算法
 - 2.React组件，理解什么是组件化
@@ -461,9 +465,12 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 2.关于Mixins的讨论文章：https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html
 * 3.和页面具有类似的生命周期
 
-##7.React样式
-###1.内联样式
+## 7.React样式
+
+### 1.内联样式
+
 方法一：js加载样式
+
 ```
 
 	//定义在render()内
@@ -498,9 +505,9 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 3.注意class需要改成className
 * 4.缺点事动画，伪类（hover）等不可用
 
-###2.内联样式中的表达式
+### 2.内联样式中的表达式
 可以使用三元表达式，或者一些条件语句，结合事件对样式进行赋值改变
-###3.css模块化
+### 3.css模块化
 *如何保证自己写的样式不影响其他人？*（大家写的css样式className还可能相同呢）
 
 * 首先安装三个插件
@@ -549,7 +556,7 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 * 3.只需要引用组件的JS就能搞定组件所有的JS和CSS
 * 4.依然是CSS，几乎零成本学习
 
-###4.JSX样式与CSS的互转
+### 4.JSX样式与CSS的互转
 [转换工具网址htttp://staxmanade.com/CssToReact](htttps://staxmanade.com/CssToReact)
 直接将转换后的代码，赋值写进render()内部
 定义
@@ -557,11 +564,12 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 使用
 `style={footerVonverStyle}`
 
-###5.Ant Design样式框架介绍
+### 5.Ant Design样式框架介绍
 [**Google开发的Material-UI**](http://www.material-ui.com/)
 [**阿里-蚂蚁金融开发的Ant Design**](https://ant.design)
 
-###6.Ant Dsign样式使用
+### 6.Ant Dsign样式使用
+
 >安装
 
 `npm install antd --save`
@@ -578,8 +586,9 @@ ES6需要安装 `npm install react-mixin@2 --save`支持
 >使用
 
 `<Input id="" style="" ref="" type=""/> `//自动加载样式
-##8.React Router 
-###1.Router概念
+## 8.React Router 
+### 1.Router概念
+
 * 1.demo代码的逻辑结构
 * 2.控制页面的层级关系
 * 3.单页面构建Router控制
@@ -673,7 +682,7 @@ webpack：
 
 >4.to 等同于`<a href=""></a>`
 
-##9.项目实战！！！项目调优！！！项目部署吧！！！
+## 9.项目实战！！！项目调优！！！项目部署吧！！！
 
 [官方网站reactstrap](http://reactstrap.github.io/)-安装使用方法
 >样式： 
@@ -858,7 +867,7 @@ webpack：
 
 ```
 
-#React和Redux  2补充
+# React和Redux  2补充
 dispatch action reducer state 单身边数据流
 
 	Express 基于nodejs，快速、开放、极简的web开发框架
@@ -895,7 +904,7 @@ dispatch action reducer state 单身边数据流
 			String NUmber等数据结构
 			create remove update 分别进行增删改
 			find findOne查询数据
-
+	
 			增删改查
 				mongod --config /usr/local/etc/momgod.conf 后台启动
 				Expres 结合mongodb
@@ -935,8 +944,8 @@ dispatch action reducer state 单身边数据流
 		express使用body-parser支持post参数
 		使用cookie-parser存储登录信息cookie
 
+# Redux
 
-#Redux
 - 专注于状态管理 和react解耦
 - 单一状态 单向数据流
 - 核心概念 store state action reducer
@@ -963,18 +972,19 @@ dispatch action reducer state 单身边数据流
 		const store = createStore(counter)
 		const init = store.getState()
 		console.log(init)
-
+	
 		//派发事件, 传递action
 		store.dispatch({type:'增加'})
 		console.log(store.getState())
-
+	
 		function listener(){
 			const current = store.getState()
 			console.log(`现在有${current}个）
 		}
 		store.subscribe(listener)
 
-##Redux和React一起使用
+## Redux和React一起使用
+
 - 把store.dispatch()方法传递给组件，内部可以调用修改状态
 - Subcribe订阅render函数，每次修改都要重新渲染
 - Redux相关内容，移到单独的文件index.redux.js单独管理
@@ -1003,15 +1013,17 @@ dispatch action reducer state 单身边数据流
 		- npm install babel-plugin-trasnform-decorators-legacy
 		- package.json里babel加上plugins配置`"plugins":["trasnform-decorators-legacy"]`
 
-#React-Router4
-	核心概念 Route、Link、Switch、BrowserRouter、Redirect
-		BrowserRouter，包裹整个应用
-		Router路由对应渲染的组件，可嵌套
-		Link跳转专用
-	url参数，Router组件参数可用冒号标识参数
-	Redirect组件跳转
-	Switch只渲染一个子组件
-#前后端联动
+# React-Router4
+​	核心概念 Route、Link、Switch、BrowserRouter、Redirect
+​		BrowserRouter，包裹整个应用
+​		Router路由对应渲染的组件，可嵌套
+​		Link跳转专用
+​	url参数，Router组件参数可用冒号标识参数
+​	Redirect组件跳转
+​	Switch只渲染一个子组件
+
+# 前后端联动
+
 使用asios发送异步请求
 	- 如何发送，端口不一致，使用proxy配置代理
 	- axios拦截器，统一loading处理
@@ -1026,7 +1038,7 @@ dispatch action reducer state 单身边数据流
 			this.setState({data:res.data})
 		}	
 	})
-
+	
 	简介好用的发送请求库
 		- Axios.interceptor设置拦截器，比如全局loading
 			+ 拦截请求
@@ -1039,8 +1051,8 @@ dispatch action reducer state 单身边数据流
 			})
 		- axios.get，post发送请求，返回promise对象
 		- Redux里获取数据，然后dispath即可
-	
-##基于cookie用户验证
+
+## 基于cookie用户验证
 express 依赖cookie-parser，
 npm install cookie-parser --save
 

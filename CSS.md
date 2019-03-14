@@ -52,65 +52,46 @@
 * 1.和其他元素都在一行上； 
 * 2.元素的高度、宽度、行高以及顶和底边距都可设置。
 
-
 ## 2.CSS3: 移动端开发中 max-device-width 与 max-width 的区别
 
-<div id="blog_content" class="blog_content">
-    <div class="iteye-blog-content-contain" style="font-size: 14px;">
-		<p>
-			翻译自stackoverflow.com，源地址：<a target="_blank" href="http://stackoverflow.com/questions/6747242/what-is-the-difference-between-max-device-width-and-max-width-for-mobile-web">http://stackoverflow.com/questions/6747242/what-is-the-difference-between-max-device-width-and-max-width-for-mobile-web</a>
-		</p>
-		<p> </p>
-		<p>
-			有同学需要开发web页在iphone/android手机上访问，想问max-device-width 与 max-width 有什么区别，他打算针对不同的屏幕大小加载不同的样式，就像下面这样：</p>
+有同学需要开发web页在iphone/android手机上访问，想问max-device-width 与 max-width 有什么区别，他打算针对不同的屏幕大小加载不同的样式，就像下面这样：
 
-		<pre class="html" name="code">
-			@media all and (max-device-width: 400px)
-			@media all and (max-width: 400px)</pre>
-		<p> </p>
-		<p>这两者有什么不同？</p>
-		<p><strong>
-			max-width 指的是显示区域的宽度，比如浏览器的显示区域宽度
-		</strong></p>
-		<p>（
-			max-width is the width of the target display area, e.g. the browser）
-		</p>
-		<p><strong>
-			max-device-width 指的是设备整个渲染（显示）区域的宽度，比如设备的实际屏幕大小，也就是设备分辨率 
-		</strong></p>
-		<p>
-			（max-device-width is the width of the device’s entire rendering area, i.e. the actual device screen）
-		</p>
-		<p><code>
-			max-height</code> 与 <code>max-device-height  
-		</code>也是同理</p>
-		<p>更进一步说，<strong>max-width在窗口大小改变或横竖屏转换时会发生变化</strong></p>
+- @media all and (max-device-width: 400px)
 
-		<p><strong>
-			max-device-width只与设备相关，横竖屏转换或改变尺寸，缩放都不会发生变化（部分android的宽高会互换而IOS不会） 
-		</strong></p>
-<p> </p>
-		<p>如何你需要调整浏览器大小查看页面的变化，那开发过程中就使用 max-width，尽管在实际的生产环境中用max-device-width更精确</p>
-<p> </p>
-		<p>要是只关心两者的区别，到这已经足够了，下面是关于两者在实际应用的区别，来自另一篇文章：</p>
+- @media all and (max-width: 400px)
 
-		<p><a target="_blank" href="http://www.javascriptkit.com/dhtmltutors/cssmediaqueries2.shtml">http://www.javascriptkit.com/dhtmltutors/cssmediaqueries2.shtml</a></p>
+  **这两者有什么不同**？
 
-		<p>
-			在CSS的媒体查询中，width与device-width之间的区别总是让人感到迷惑，下面就让我们来阐述一下两者的区别。
-		</p>
-<p> </p>
-		<p>
-			device- width指的是设备本身的宽度，也就是屏幕的分辨率，比如说你手机的分辨率是1440*900，这表示你的屏幕宽是1440px， 所以device-width是1440px。大部分的手机宽度不到480px，（当然今后的趋势是越来越大)。iphone 4的device-width就只有320px，即便对外宣称有640*960.这要归功于iphone的<strong>retina</strong>显示方式，也就是<strong>用两个像素来表示屏幕上一个CSS像素</strong>，IPAD3也是这样的。官方说IPAD3跟前几代一样采用的device-width是768px，它的实际分辨率达到了1536*2048，就是这个原因。
-		</p>
-<p> </p>
-		<p>
-			尽管device-width在指定特定的设备更有用，相比之下width在创建响应式页面时用途更加广泛。下面的表格是一个例子，
-		</p>
+- max-width 指的是显示区域的宽度，比如浏览器的显示区域宽度
+- max-device-width 指的是设备整个渲染（显示）区域的宽度，比如设备的实际屏幕大小，也就是设备分辨率 
+
+`max-height`与`max-device-height`也是同理，
+
+更进一步说，
+
+- **max-width**在窗口大小改变或横竖屏转换时会发生变化
+- **max-device-width**只与设备相关，横竖屏转换或改变尺寸，缩放都不会发生变化（部分android的宽高会互换而IOS不会） 
+
+如何你需要调整浏览器大小查看页面的变化，那开发过程中就使用 max-width，尽管在实际的生产环境中用max-device-width更精确
+
+
+
+要是只关心两者的区别，到这已经足够了，下面是关于两者在实际应用的区别，来自另一篇文章：
+
+<a target="_blank" href="http://www.javascriptkit.com/dhtmltutors/cssmediaqueries2.shtml">http://www.javascriptkit.com/dhtmltutors/cssmediaqueries2.shtml</a>
+
+
+
+在CSS的媒体查询中，`width`与`device-width`之间的区别总是让人感到迷惑，下面就让我们来阐述一下两者的区别。
+
+`device- width`指的是设备本身的宽度，也就是屏幕的分辨率，比如说你手机的分辨率是1440*900，这表示你的屏幕宽是1440px， 所以`device-width`是1440px。大部分的手机宽度不到480px，（当然今后的趋势是越来越大)。iphone 4的`device-width`就只有320px，即便对外宣称有640*960.这要归功于iphone的<strong>retina</strong>显示方式，也就是<strong>用两个像素来表示屏幕上一个CSS像素</strong>，IPAD3也是这样的。官方说IPAD3跟前几代一样采用的`device-width`是768px，它的实际分辨率达到了1536*2048，就是这个原因。
+
+​	尽管device-width在指定特定的设备更有用，相比之下width在创建响应式页面时用途更加广泛。下面的表格是一个例子，
+
+
 
 <table cellpadding="3" border="1" cellspacing="0" style="width: 80%;">
 <strong>CSS Media Dimensions</strong>
-
 <tr>
 Device
 resolution (px)
@@ -227,7 +208,7 @@ device-width/ device-height (px)
 	<p>通过以上方式，我们的CSS媒体查询方案已经很完善了，但为了页面展示跟我们想像的一样，还要增加一个viewport标签： <code>meta</code> tag.</p>
 <p> </p>
 	<p>了解更多请参考：<a target="_blank" href="http://justcode.ikeepstudying.com/2016/07/css%ef%bc%9a%e5%aa%92%e4%bd%93%e6%9f%a5%e8%af%a2-css3-media-queries/">CSS：媒体查询 CSS3 Media Queries</a></p>
-
+	
 	<p>本文转自：<a target="_blank" href="http://justcode.ikeepstudying.com/2016/07/css3-%e7%a7%bb%e5%8a%a8%e7%ab%af%e5%bc%80%e5%8f%91%e4%b8%ad-max-device-width-%e4%b8%8e-max-width-%e7%9a%84%e5%8c%ba%e5%88%ab/">CSS3: 移动端开发中 max-device-width 与 max-width 的区别</a></p>
 <p> </p>
 </div>

@@ -1,11 +1,13 @@
-#VUE
-##安装
+# VUE
+
+## 安装
+
 最新稳定版本
 npm install vue
 
 npm install -g veu-cli
 
-##模板指令
+## 模板指令
 
 - new 一个vue对象的时候可以设置它的属性，其中最重要的包括三个，分别是data method watch
 - 其中deta代表vue对象的数据，method代表vue对象的方法，watch设置了对象监听的方法。
@@ -19,8 +21,8 @@ npm install -g veu-cli
 	- v-on	事件绑定
 	- v-bing	属性绑定等等
 
-##webpack构建VUE
-###静态资源
+## webpack构建VUE
+### 静态资源
 
 npm init
 npm i webpack vue vue-loader
@@ -136,13 +138,12 @@ npm i webpack vue vue-loader
 		new HTMlPlgugin()
 		]
 
-
-##vue2介绍
+## vue2介绍
 数据绑定
 vue文件开发方式
 render方法
 
-###API重点
+### API重点
 生命周期方法
 computed
 
@@ -153,7 +154,7 @@ postcss.config.js文件
 具体配置的不写了
 慕课网视频[https://www.imooc.com/video/16406](https://www.imooc.com/video/16406 "慕课网视频")
 
-###weipack配置优化
+### weipack配置优化
 慕课网：4-1 css单独分离打包[https://www.imooc.com/video/16409](https://www.imooc.com/video/16409 "慕课网视频")
 
 慕课网：4-2webpack区分打包类库代码及hash优化[https://www.imooc.com/video/16409](https://www.imooc.com/video/16410 "慕课网视频")
