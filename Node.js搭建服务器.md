@@ -411,4 +411,36 @@ app.use(function (err, req, res, next) {
 
 技术栈：Koa2 + Nodejs + MongoDB + Puppeteer + Parcel + AntDesign
 
-> 1.
+> 1.Koa框架API
+
+> 1.1 Koa核心对象
+
+`HTTP` `接收` `解析` `响应` `中间件` `执行上下文`
+
+`Application` `Context` `Request Response` `Middlewares` `Session` `Cokkie`
+
+```
+var koa = require('koa');
+var app = new koa();
+
+app.use(async (ctx,next) {
+    ctx.body = 'Hello world';
+});
+app.listen(3000)
+```
+
+> 1.2 web服务类 application
+
+> 1.3 http上下文对象
+
+> 1.4 http请求对象request
+
+> 1.5 http 响应对象
+
+> 1.6 Koa中间件 middlewares
+
+> 1.7 纯函数-尾递归与魔法大师
+
+> 1.8 session-cookie-路由
+
+> 2.1设计与分析
