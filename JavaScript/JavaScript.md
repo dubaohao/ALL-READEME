@@ -82,7 +82,6 @@ preventDefault() 阻止事件的默认动作
 ## 5.DNS
 
 ```
-
 	下面关于DNS说法正确的是（）
 	A.DNS的作用是域名和IP地址的相互映射
 	B.DNS协议大多数运行在UDP协议之上
@@ -97,4 +96,6 @@ preventDefault() 阻止事件的默认动作
 游览器的DNS缓存：chrome对每个域名会默认缓存60s；IE将DNS缓存30min；Firefox默认缓存时间只有1分钟；Safari约为10S。
 
 ## 6.全局函数
+
 ![](https://uploadfiles.nowcoder.net/images/20170913/2338761_1505282688457_E00EB4A17EF35C66FB94D24B01A79DC1)
+

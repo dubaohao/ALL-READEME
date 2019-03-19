@@ -2,6 +2,12 @@
 
 有关 JS 中的 this、call、apply 和 bind 的概念网络上已经有很多文章讲解了 这篇文章目的是梳理一下这几个概念的知识点以及阐述如何用原生 JS 去实现这几个功能
 
+-[this 指向问题](# this 指向问题)
+
+-[this 改变指向问题](# this 改变指向问题)
+
+-[原生实现 call apply bind new](# 原生实现 call apply bind new)
+
 ## this 指向问题
 
 ### this

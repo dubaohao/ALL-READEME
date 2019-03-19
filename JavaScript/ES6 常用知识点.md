@@ -1,6 +1,32 @@
-# ES6 知识点
+# ES6 常用知识点
 
-## 前言
+-[前言](#前言)
+
+-[let/const（常用）](#let/const（常用）)
+
+-[箭头函数（常用）](#箭头函数（常用）)
+
+-[iterator迭代器](#iterator迭代器)
+
+-[解构赋值（常用）](#解构赋值（常用）)
+
+-[剩余/扩展运算符（常用）](#剩余/扩展运算符（常用）)
+
+-[对象属性/方法简写（常用）](#对象属性/方法简写（常用）)
+
+-[for … of](#for-…-of循环)
+
+-[Promise（常用）](#Promise（常用）)
+
+-[ES6 Module（常用）](#ES6-Module（常用）)
+
+-[函数默认值](#函数默认值)
+
+-[Proxy](#Proxy)
+
+-[Object.assign](#Object.assign)
+
+# 前言
 
 ECMAScript 6.0（简称ES6），作为下一代JavaScript的语言标准正式发布于2015 年 6 月，至今已经发布3年多了，但是因为蕴含的语法之广，完全消化需要一定的时间，这里我总结了部分ES6，以及ES6以后新语法的知识点，使用场景，希望对各位有所帮助
 
@@ -71,13 +97,9 @@ for循环分为3部分，第一部分包含一个变量声明，第二部分包�
 
 ![img](data:image/svg+xml;utf8,<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="266" height="219"></svg>)
 
-
-
 上面这个例子,因为使用var声明变量,会有变量提升,同样也是发生在预编译阶段,var会提升到当前函数作用域的顶部并且默认赋值为undefined,如果这几行代码是在全局作用域下,则name变量会直接提升到全局作用域,随后进入执行阶段执行代码,name被赋值为"abc",并且可以成功打印出字符串abc
 
 相当于这样
-
-
 
 ![img](F:\Code\github\assets\168e0abf693ab68b)
 
@@ -97,27 +119,17 @@ for循环分为3部分，第一部分包含一个变量声明，第二部分包�
 
 ![img](F:\Code\github\assets\168df9ead3323a16)
 
-
-
 1. const声明变量不能改变，如果声明的是一个引用类型，则不能改变它的内存地址（这里牵扯到JS引用类型的特点，有兴趣可以看我另一篇博客[对象深拷贝和浅拷贝](https://juejin.im/post/5c26dd8fe51d4570c053e08b)）
-
-
 
 ![img](F:\Code\github\assets\168df9eaff4bf8e6)
 
-
-
 有些人会有疑问，为什么日常开发中没有显式的声明块级作用域，let/const声明的变量却没有变为全局变量
-
-
 
 ![img](F:\Code\github\assets\168df9eb0879648b)
 
 
 
 这个其实也是let/const的特点，ES6规定它们不属于顶层全局变量的属性，这里用chrome调试一下
-
-
 
 ![img](F:\Code\github\assets\168df9eb0a403854)
 
@@ -139,11 +151,7 @@ ES6 允许使用**箭头**（=>）定义函数
 2. 箭头函数没有prototype属性，不能用作构造函数（不能用new关键字调用）
 3. 箭头函数没有自己this，它的this是词法的，引用的是上下文的this，即在你写这行代码的时候就箭头函数的this就已经和外层执行上下文的this绑定了(这里个人认为并不代表完全是静态的,因为外层的上下文仍是动态的可以使用call,apply,bind修改,这里只是说明了箭头函数的this始终等于它上层上下文中的this)
 
-
-
 ![img](F:\Code\github\assets\168df9eb0c098401)
-
-
 
 因为setTimeout会将一个匿名的回调函数推入异步队列，而回调函数是具有全局性的，即在非严格模式下this会指向window，就会存在丢失变量a的问题，而如果使用箭头函数，在书写的时候就已经确定它的this等于它的上下文（这里是makeRequest的函数执行上下文，相当于将箭头函数中的this绑定了makeRequest函数执行上下文中的this）因为是controller对象调用的makeRequest函数，所以this就指向了controller对象中的a变量
 
@@ -155,45 +163,25 @@ ES6 允许使用**箭头**（=>）定义函数
 
 ES5写法:
 
-
-
 ![img](F:\Code\github\assets\168df9eb128894f7)
-
-
 
 ES6箭头函数:
 
-
-
 ![img](F:\Code\github\assets\168df9eb2071ae0b)
-
-
 
 再来看一个例子
 
-
-
 ![img](F:\Code\github\assets\168e0cd852903baa)
-
-
 
 值得注意的是makeRequest后面的function不能使用箭头函数，因为这样它就会再使用上层的this，而再上层是全局的执行上下文，它的this的值会指向window,所以找不到变量a返回undefined
 
 在数组的迭代中使用箭头函数更加简洁，并且省略了return关键字
 
-
-
 ![img](F:\Code\github\assets\168df9eb3a73b69d)
-
-
 
 不要在可能改变this指向的函数中使用箭头函数，类似Vue中的methods,computed中的方法,生命周期函数，Vue将这些函数的this绑定了当前组件的vm实例，如果使用箭头函数会强行改变this，因为箭头函数优先级最高（无法再使用call,apply,bind改变指向）
 
-
-
 ![img](F:\Code\github\assets\168e0d5ae99d7e7c)
-
-
 
 在把箭头函数作为日常开发的语法之前,个人建议是去了解一下箭头函数的是如何绑定this的,而不只是当做省略function这几个单词拼写,毕竟那才是ECMAScript真正希望解决的问题
 
@@ -372,7 +360,7 @@ ES6交换变量:
 
 
 
-# 对象属性/方法简写(常用)
+# 对象属性/方法简写（常用）
 
 ### 对象属性简写
 
@@ -594,7 +582,7 @@ Promise在设计的时候保证所有响应的处理回调都是异步调用的�
 
 关于Promise还有很多很多需要讲的，包括它的静态方法all，race，resolve，reject，Promise的执行顺序，Promise嵌套Promise，thenable对象的处理等，碍于篇幅这里只介绍了一下为什么需要使用Promise。但很多开发者在日常使用中只是了解这些API，却不知道Promise内部具体是怎么实现的，遇到复杂的异步代码就无从下手，非常建议去了解一下Promise A+的规范，自己实现一个Promise
 
-# ES6 Module(常用)
+# ES6 Module（常用）
 
 在ES6 Module出现之前，模块化一直是前端开发者讨论的重点，面对日益增长的需求和代码，需要一种方案来将臃肿的代码拆分成一个个小模块，从而推出了AMD,CMD和CommonJs这3种模块化方案，前者用在浏览器端，后面2种用在服务端，直到ES6 Module出现
 

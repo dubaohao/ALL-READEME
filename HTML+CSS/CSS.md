@@ -13,8 +13,7 @@
 >常用的块状元素有：
 
 ```
-	
-	<div>、<p>、<h1>…<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>
+<div>、<p>、<h1>…<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>
 ```
 >什么是块级元素？ 
 
@@ -151,68 +150,8 @@ device-width/ device-height (px)
 <td width="15%">Amazon Kindle Fire</td>
 <td width="42%">1024 x 600</td>
 <td width="42%">1024 x 600, landscape mode</td>
-</tr>
-
-</table>
-
-	<p>
-		( 也可以参考：<a target="_blank" href="http://justcode.ikeepstudying.com/2016/07/css3-%e5%aa%92%e4%bd%93%e6%9f%a5%e8%af%a2%e7%a7%bb%e5%8a%a8%e8%ae%be%e5%a4%87%e5%b0%ba%e5%af%b8-media-queries-standard-devices/">CSS3 媒体查询移动设备尺寸 Media Queries for Standard Devices</a>)
-	</p>
-	<p>
-		需要注意的是，在苹果设备上，device-width指的总是设备处于肖像模式时的宽，<strong>不会随设备横竖屏转换变化，</strong>就是说不管怎么换，宽都是不会变的，高也一样。
-	</p>
-<p> </p>
-	<p>下面是一个通过媒体查询区别设备和不同尺寸的例子：</p>
-
-<pre class="html" name="code">/* #### Mobile Phones Portrait #### */
-@media screen and (max-device-width: 480px) and (orientation: portrait){
-/* some CSS here */
-}
-
-/* #### Mobile Phones Landscape #### */
-@media screen and (max-device-width: 640px) and (orientation: landscape){
-/* some CSS here */
-}
-
-/* #### Mobile Phones Portrait or Landscape #### */
-@media screen and (max-device-width: 640px){
-/* some CSS here */
-}
-
-/* #### iPhone 4+ Portrait or Landscape #### */
-@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
-/* some CSS here */
-}
-
-/* #### iPhone 5 Portrait or Landscape #### */
-@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2){
-/* some CSS here */
-}
-
-/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
-@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3){
-/* some CSS here */
-}
-
-/* #### Tablets Portrait or Landscape #### */
-@media screen and (min-device-width: 768px) and (max-device-width: 1024px){
-/* some CSS here */
-}
-
-/* #### Desktops #### */
-@media screen and (min-width: 1024px){
-/* some CSS here */
-}</pre>
-
-<p> </p>
-	<p>通过以上方式，我们的CSS媒体查询方案已经很完善了，但为了页面展示跟我们想像的一样，还要增加一个viewport标签： <code>meta</code> tag.</p>
-<p> </p>
-	<p>了解更多请参考：<a target="_blank" href="http://justcode.ikeepstudying.com/2016/07/css%ef%bc%9a%e5%aa%92%e4%bd%93%e6%9f%a5%e8%af%a2-css3-media-queries/">CSS：媒体查询 CSS3 Media Queries</a></p>
-	
-	<p>本文转自：<a target="_blank" href="http://justcode.ikeepstudying.com/2016/07/css3-%e7%a7%bb%e5%8a%a8%e7%ab%af%e5%bc%80%e5%8f%91%e4%b8%ad-max-device-width-%e4%b8%8e-max-width-%e7%9a%84%e5%8c%ba%e5%88%ab/">CSS3: 移动端开发中 max-device-width 与 max-width 的区别</a></p>
-<p> </p>
-</div>
-  </div>
+</tr></table>
+需要注意的是，在苹果设备上，device-width指的总是设备处于肖像模式时的宽，<strong>不会随设备横竖屏转换变化，</strong>就是说不管怎么换，宽都是不会变的，高也一样。
 
 ## 3.a:link,a:visited,a:hover,a:active 分别是什么意思?
 1. link:连接平常的状态

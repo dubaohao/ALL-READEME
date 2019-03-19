@@ -1,31 +1,20 @@
-# [译] 如何在 JavaScript 中使用 apply(💅)，call(📞)，bind(➰)
-
-
-
-![img](https://user-gold-cdn.xitu.io/2019/3/11/1696bd0eca224a8d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
-
-> 原文链接：[How to use the apply(💅), call(📞), and bind(➰) methods in JavaScript](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2Fhow-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90)
-> 原文作者：[Ashay Mandwarya](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2F%40ashaymurceilago)
-> 译者：[JintNiu](https://juejin.im/user/5b847cd2e51d4538af60f8cd)
-> 推荐理由：`apply`,`call` 和 `bind` 在面试和日常编码中常会遇到，了解和掌握他们的用法变得尤为重要。
+# 如何在 JavaScript 中使用 apply，call，bind
 
 在本文中，我们将讨论函数原型链中的 `apply`，`call` 和 `bind` 方法，它们是 `JavaScript` 中最重要且经常使用的概念，且与 `this` 关键字密切相关。
 
-因此，想要掌握本文所述内容，您必须熟悉 `this` 关键字的概念和用法。可以参考[这篇文章](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2Fa-guide-to-this-in-javascript-e3b9daef4df1)。
-
-> 译者注：可参考：[[译\] JavaScript 之 this 指南](https://juejin.im/post/5c876ba96fb9a049ae08bc63)
-
 要了解 `apply`|`call`|`bind`，我们首先需要了解 `JavaScript` 中的 `Function`，当然这前提是你可以熟料运用 `this` 了。
 
+-[Functions](#Functions)
+
+-[Apply 💅](Apply-💅)
+
+-[Call 📞](Call-📞)
+
+-[Bind ➰](Bind-➰)
+
+-[]()
+
 ## Functions
-
-
-
-![img](https://user-gold-cdn.xitu.io/2019/3/11/1696bd12c740963a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 `Function` 构造函数创建了一个新的 `Function` 对象。直接调用构造函数的话，可以动态地创建出在全局作用域下的函数。
 
@@ -54,12 +43,6 @@
 这篇文章中我们只讨论前三个。
 
 ## Apply 💅
-
-
-
-![img](https://user-gold-cdn.xitu.io/2019/3/11/1696c68f09b17b6e?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 > `apply()` 是函数原型中的一个重要方法，用于调用其他函数， 参数为给定 `this` 和一个数组（或类似数组的对象）。
 
@@ -127,12 +110,6 @@ console.log(Math.max.apply(null, numbers)); //78
 值得注意的是，我们使用 `null` 代替了 `this`。由于提供的参数是数字数组，即使使用了 `this`，它也仍会指向同一个数组，最终得到相同的结果。因此，这种情况下我们可以省略 `this`，改用 `null` 代替。也就是说，`apply` 函数中的 `this` 参数是一个可选参数。
 
 ## Call 📞
-
-
-
-![img](https://user-gold-cdn.xitu.io/2019/3/11/1696cad7c0e8f511?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
 
 > `call()` 方法用于调用一个函数，参数为给定 `this` 和若干个单独指定的参数序列。
 
@@ -202,13 +179,7 @@ sleep.call(obj);
 
 调用函数 `sleep`，其参数为 `obj`。可以看到 `this.animal` 和 `this.sleepDuration` 分别取到了 `obj` 的属性，并输出了完整的句子。
 
-## Bind➰
-
-
-
-![img](https://user-gold-cdn.xitu.io/2019/3/11/1696ce60cfe52dc0?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-
+## Bind ➰
 
 > 当 `bind()` 方法被调用时会创建一个新函数，该函数第一个参数作为 `this`，并在调用新函数时提供一个给定的参数序列。  — MDN
 
@@ -260,3 +231,14 @@ console.log(boundGetX()); // 81
 ## 结论
 
 现在我们已经了解到以上三种方法的基础用法，但你可能会疑惑：为什么要用 3 个不同的方法去做相同的事情。为了解决这个问题，你必须反复练习在不同场景下它们的使用方法，更全面地了解什么时候使用它们，以及如何更好的使用，这肯定会让你的代码更清晰，更强大。
+
+
+
+> 原文链接：[How to use the apply(💅), call(📞), and bind(➰) methods in JavaScript](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2Fhow-to-use-the-apply-call-and-bind-methods-in-javascript-80a8e6096a90)
+> 原文作者：[Ashay Mandwarya](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2F%40ashaymurceilago)
+> 译者：[JintNiu](https://juejin.im/user/5b847cd2e51d4538af60f8cd)
+> 推荐理由：`apply`,`call` 和 `bind` 在面试和日常编码中常会遇到，了解和掌握他们的用法变得尤为重要。
+
+因此，想要掌握本文所述内容，您必须熟悉 `this` 关键字的概念和用法。可以参考[这篇文章](https://link.juejin.im/?target=https%3A%2F%2Fmedium.freecodecamp.org%2Fa-guide-to-this-in-javascript-e3b9daef4df1)。
+
+> 译者注：可参考：[[译\] JavaScript 之 this 指南](https://juejin.im/post/5c876ba96fb9a049ae08bc63)
