@@ -1,4 +1,4 @@
-# ionic3 APP小白开发 模仿知乎界面
+# ionic3 APP
 
 > ionic3 基本命令
 
@@ -42,17 +42,3 @@
 
 - 浏览器 微信版本，静态站点，部署node.js,IIS,nginx/apache
     `$ ionic build`
-
-***
-> apk安装包下载
-
-[Android ](APP开发中)
-链接无效正在开发中
-
-#问题与解决
-有时候会遇到一些小问题，函数未定义
-删除生成的文件内容 @IonicPage（）
-
-理解modal和nav的使用场景
-modal临时、过渡的弹窗
-nav用于层级关系的页面展示 
