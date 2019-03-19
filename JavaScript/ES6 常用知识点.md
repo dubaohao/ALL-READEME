@@ -2,29 +2,29 @@
 
 -[前言](#前言)
 
--[let/const（常用）](#let/const（常用）)
+-[let/const（常用）](#let/const常用)
 
--[箭头函数（常用）](#箭头函数（常用）)
+-[箭头函数（常用）](#箭头函数常用)
 
 -[iterator迭代器](#iterator迭代器)
 
--[解构赋值（常用）](#解构赋值（常用）)
+-[解构赋值（常用）](#解构赋值常用)
 
--[剩余/扩展运算符（常用）](#剩余/扩展运算符（常用）)
+-[剩余/扩展运算符（常用）](#剩余/扩展运算符常用)
 
--[对象属性/方法简写（常用）](#对象属性/方法简写（常用）)
+-[对象属性/方法简写（常用）](#对象属性/方法简写常用)
 
--[for … of](#for-…-of循环)
+-[for … of](#for–of循环)
 
--[Promise（常用）](#Promise（常用）)
+-[Promise（常用）](#promise常用)
 
--[ES6 Module（常用）](#ES6-Module（常用）)
+-[ES6 Module（常用）](#es6-module常用)
 
 -[函数默认值](#函数默认值)
 
--[Proxy](#Proxy)
+-[Proxy](#proxy)
 
--[Object.assign](#Object.assign)
+-[Object.assign](#objectassign)
 
 # 前言
 

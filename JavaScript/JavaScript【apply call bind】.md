@@ -4,15 +4,13 @@
 
 要了解 `apply`|`call`|`bind`，我们首先需要了解 `JavaScript` 中的 `Function`，当然这前提是你可以熟料运用 `this` 了。
 
--[Functions](#Functions)
+-[Functions](#functions)
 
--[Apply 💅](Apply-💅)
+-[Apply 💅](apply-)
 
--[Call 📞](Call-📞)
+-[Call 📞](call-)
 
--[Bind ➰](Bind-➰)
-
--[]()
+-[Bind ➰](bind-)
 
 ## Functions
 
