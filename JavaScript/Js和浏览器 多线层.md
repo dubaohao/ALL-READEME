@@ -652,9 +652,7 @@ MessageChannel属于宏任务，优先级是：`MessageChannel->setTimeout`，
 
 ## 附录
 
-### 博客
-
-初次发布`2018.01.21`于我个人博客上面
+### 来源博客
 
 <http://www.dailichun.com/2018/01/21/js_singlethread_eventloop.html>
 
@@ -672,19 +670,11 @@ MessageChannel属于宏任务，优先级是：`MessageChannel->setTimeout`，
 - <https://www.cnblogs.com/wyaocn/p/5761163.html>
 - <http://www.ruanyifeng.com/blog/2014/10/event-loop.html#comment-text>
 
-- [![img](https://cdn.segmentfault.com/v-5c8b4d77/global/img/creativecommons-cc.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/)
-
-
-
-赞  |   458收藏  |  720
-
-![img](https://sponsor-static.segmentfault.com/6cae8e65e680114942c06542805c262e.png)
+- [![img](https://cdn.segmentfault.com/v-5c8b4d77/global/img/creativecommons-cc.svg)](https://creativecommons.org/licenses/by-nc-nd/4.0/
 
 ![img](https://sponsor.segmentfault.com/lg.php?bannerid=106&campaignid=33&zoneid=3&loc=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000012925872%23articleHeader8&cb=cca6c3ccca)
 
 #### 你可能感兴趣的
-
-![img](https://sponsor.segmentfault.com/lg.php?bannerid=0&campaignid=0&zoneid=4&loc=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000012925872%23articleHeader8&cb=698632870e)
 
 - [HTML5，不只是看上去很美（第二弹：打造最美3D机房）](http://segmentfault.com/a/1190000002866653)MonoLog[javascript](https://segmentfault.com/t/javascript)[html5](https://segmentfault.com/t/html5)[前端](https://segmentfault.com/t/%E5%89%8D%E7%AB%AF)[3d](https://segmentfault.com/t/3d)[webgl](https://segmentfault.com/t/webgl)
 - [浏览器渲染页面过程与页面优化](http://segmentfault.com/a/1190000010298038)Aus0049[css](https://segmentfault.com/t/css)[渲染](https://segmentfault.com/t/%E6%B8%B2%E6%9F%93)
