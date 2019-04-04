@@ -53,7 +53,7 @@ SPA被人追捧是有道理的，但是它也有不足之处。当然任何东�
 在此处提到一个比较重要的概念：URL中的井号。其实它只是浏览地址中的一个特殊符号。在以前，我们经常用它来定位文档位置。例如以下代码：
 
 ```
-`<``a` `href="target">go target</``a``>``......``<``div` `id="target">i am target place</``div``>`
+<a href="target">go target</a>...... <div id="target">i am target place</div>
 ```
 
 点击a链接，文档会滚动到id为target的div的可视区域上面去。hash除了这个功能还有另一一种含义：指导浏览器的行为但不上传到服务器。大家都知道，改变url中的任何一个字符都会导致浏览器重新请求服务器，除了#号后面那段字符之外。所以，简而言之我们可以这样理解：改变#后面的值不触发网页重载，但会记录到浏览器history中去。
@@ -79,19 +79,45 @@ SPA被人追捧是有道理的，但是它也有不足之处。当然任何东�
 首先，我们画出三个div，它们实际上是作为三个界面存在界面上的，body作为界面外框容器，限制着它们的大小。为了给每个界面配对一个hash地址，我们给每个div配一个id，讲hash地址与对应的选择器（id、class）建立链接关系，从而可以从hash变化值中操作界面。
 
 ```
-`<``body``>``  ``<``div` `id="A" class="a J-A">A</``div``>``  ``<``div` `id="B" class="b J-B">B</``div``>``  ``<``div` `id="C" class="c J-C">C</``div``>``</``body``>`
+<body>  
+	<div id="A" class="a J-A">A</div>  
+	<div id="B" class="b J-B">B</div>  
+	<div id="C" class="c J-C">C</div>
+</body>
 ```
 
 接下来，为它们添加样式，每个div都是全屏的，一开始只有A界面显示，其他的都隐藏之：
 
 ```
-`body {``  ``height``: ``500px``;``  ``width``: ``100%``;``  ``margin``: ``0``;``  ``padding``: ``0``;``}``div {``  ``width``: ``100%``;``  ``height``: ``100%``;``  ``position``: ``absolute``;``  ``font-size``: ``500px``;``  ``text-align``: ``center``;``  ``display``: ``none``;``}``.a {``    ``background-color``: pink;``    ``display``: ``block``;``}``.b {``  ``background-color``: ``red``;``}``.c {``background-color``: ``gray``;``}`
+body {  
+	height: 500px;  
+	width: 100%;  
+	margin: 0;  
+	padding: 0;
+}
+div {  
+	width: 100%;
+	height: 100%;  
+	position: absolute;  
+	font-size: 500px;  
+	text-align: center;  
+	display: none;
+}
+.a {    
+	background-color: pink;    
+	display: block;
+}
+.b {  background-color: red;}
+.c {background-color: gray;}
 ```
 
 现在我们给网页添加上行为，首先需要知道的一点是，hash指即地址栏中#号后面的字符串，它的改变不会引起界面的刷新，但是会出发onhashchange事件，我们要做的就是监听这个事件：
 
 ```
-`function` `hashChanged(hashObj) {``  ``//变化之后的url``  ``var` `newhash = hashObj.newURL.split(``'#'``)[1];``  ``//变化之前的url``  ``var` `oldhash = hashObj.oldURL.split(``'#'``)[1];``  ``//将对应的hash下界面显示和隐藏``  ``document.getElementById(oldhash).style.display = ``'none'``;``  ``document.getElementById(newhash).style.display = ``'block'``;``}``//监听路由变化``window.onhashchange = hashChanged;`
+function hashChanged(hashObj) {  //变化之后的url  
+var newhash = hashObj.newURL.split('#')[1];  //变化之前的url  
+var oldhash = hashObj.oldURL.split('#')[1];  //将对应的hash下界面显示和隐藏document.getElementById(oldhash).style.display = 'none';  document.getElementById(newhash).style.display = 'block';}//监听路由变化
+window.onhashchange = hashChanged;`
 ```
 
 目前，只需要以上的代码，我们便可以完成一个最简单的SPA，通过地址栏的变化，界面会相应地变化。当然，除了手动在地址栏里面改变hash的变化，我们也可以用代码改变它的变化,从而推动界面变化，下面是两种方式的效果图：
@@ -103,7 +129,47 @@ SPA被人追捧是有道理的，但是它也有不足之处。当然任何东�
 下面贴出所有的代码：
 
 ```
-`<!``DOCTYPE` `html>``<``html``>``<``head``>``  ``<``title``></``title``>``  ``<``style` `type="text/css">``    ``body {``      ``height: 500px;``      ``width: 100%;``      ``margin: 0;``      ``padding: 0;``    ``}``    ``div {``      ``width: 100%;``      ``height: 100%;``      ``position: absolute;``      ``font-size: 500px;``      ``text-align: center;``      ``display: none;``    ``}``    ``.a {``        ``background-color: pink;``        ``display: block;``    ``}``    ``.b {``      ``background-color: red;``    ``}``    ``.c {``    ``background-color: gray;``    ``}``  ``</``style``>``</``head``>``<``body``>``  ``<``div` `id="A" class="a J-A">A</``div``>``  ``<``div` `id="B" class="b J-B">B</``div``>``  ``<``div` `id="C" class="c J-C">C</``div``>``</``body``>``<``script` `type="text/javascript">``function hashChanged(hashObj) {``  ``//变化之后的url``  ``var newhash = hashObj.newURL.split('#')[1];``  ``//变化之前的url``  ``var oldhash = hashObj.oldURL.split('#')[1];``  ``//将对应的hash下界面显示和隐藏``  ``document.getElementById(oldhash).style.display = 'none';``  ``document.getElementById(newhash).style.display = 'block';``}``//监听路由变化``window.onhashchange = hashChanged;``</``script``>``</``html``> `
+<!DOCTYPE html><html>
+<head>  
+<title></title>   
+<style type="text/css">    
+body {
+	height: 500px;
+	width: 100% ;
+	margin: 0;
+	padding: 0;
+}
+div {
+	width: 100% ;
+    height: 100% ;
+    position: absolute;
+    font-size: 500px;
+    text-align: center;
+    display: none;
+}
+.a {
+	background-color: pink;
+	display: block;      
+}     
+.b{ background-color: red;      }
+.c{ background -color: gray;    }
+</style>  
+</head>
+<body>    
+        <div id="A" class="a J-A">A</div>    
+        <div id="" class ="b J-B">B</div>    
+        <div id="  clas "c J-C">C</div>
+</body>
+<script type="text/javascript">
+	function hashChanged(hashObj) {
+    //变化之后的url      
+    ne ash = hashObj.newURL.split('#')[1] ;//变化之前的url     
+    r old sh = hashObj.oldURL.split('#')[1] ;    //将对应的hash下界面显示和隐
+    cument.getEle ntB (oldhash).style.display = 'none' ;
+    document.getElementById(newhash).style.display = 'block' ;
+    }  
+    //监听路由变化
+    window.onh hcha e = hashChanged;</script></html> 
 ```
 
 ### SEO优化
