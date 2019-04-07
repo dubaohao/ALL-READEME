@@ -7,6 +7,8 @@ npm install vue
 
 npm install -g veu-cli
 
+
+
 ## 模板指令
 
 - new 一个vue对象的时候可以设置它的属性，其中最重要的包括三个，分别是data method watch
