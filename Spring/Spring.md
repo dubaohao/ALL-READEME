@@ -81,7 +81,9 @@ DispatcherServlet是前端控制器设计模式的实现，提供Spring Web MVC�
 
 ### 5.Json字符串处理成JSON格式
 ​	依赖
-​	<!--//json字符串转换成json格式-->
+
+```
+<!--//json字符串转换成json格式-->
 ​	        <dependency>
 ​	            <groupId>com.fasterxml.jackson.core</groupId>
 ​	            <artifactId>jackson-databind</artifactId>
@@ -93,13 +95,21 @@ DispatcherServlet是前端控制器设计模式的实现，提供Spring Web MVC�
 ​	            <version>1.2.37</version>
 ​	        </dependency>
 ​	        <!--结束-->
+```
+
 ​	使用
-​	String jsonString；
+​	
+
+```
+String jsonString；
 ​	JSONObject jsonObject= JSONObject.parseObject(jsonString);
 ​	        String name=jsonObject.getString("name");
 ​	        String base64=jsonObject.getString("base64");
 ​	        String type=jsonObject.getString("type");
 ​	        String caterId=jsonObject.getString("caterId");
+```
+
+
 
 ### 6.HttpMediaTypeNotAcceptableException: Could not find acceptable representation原因及解决方法
 		request和resp设置的  contenttype  不一致
