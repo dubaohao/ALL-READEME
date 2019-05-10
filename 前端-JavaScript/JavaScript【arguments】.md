@@ -26,7 +26,7 @@ showargs(1,2,3,4,5);12345
 
 下面我们用console.log的方式，将arguments对象输出到控制台，这里不得不说一句，chrome的console工具好用得不得了（我不是来打广告的）。
 
-![arguments](F:\Code\github\JavaScript\assets\20161119152524405)
+![arguments](..\assets\20161119152524405)
 
 这里我们可以看到arguments对象将我传入的五个参数以数组的形式保存在里面，还有保存了我传入函数的实参的个数（length）。而且我们可以看到arguments对象的 ==*_ proto _*== 是指向object的，这也说明了他是个类数组对象，而不是一个数组。
 
@@ -50,7 +50,7 @@ console.log( add(1,2,3) );12345678910
 
 看看结果：
 
-![结果](F:\Code\github\JavaScript\assets\20161119154939672)
+![结果](..\assets\20161119154939672)
 
 最后我们还可以看到arguments还有一个叫做callee的属性，这个属性是表示的是当前函数的一个引用，简单点说，这个属性里面存储的我们调用的这个函数的代码，实在无法理解的时候，又到了console.log[大显身手](https://www.baidu.com/s?wd=%E5%A4%A7%E6%98%BE%E8%BA%AB%E6%89%8B&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd)的时候了。
 
@@ -67,7 +67,7 @@ function showcallee() {
 showcallee();12345678910
 ```
 
-![结果](F:\Code\github\JavaScript\assets\20161119161029575)
+![结果](..\assets\20161119161029575)
 
 看到结果的你是不是和我一样惊呆了呢，这不就是我写的代码吗，arguments.callee完完整整的把这个函数的这段代码返回了。
 

@@ -94,7 +94,7 @@ Git支持多种协议，包括`https`，但通过`ssh`支持的原生`git`协议
 
 #### 解决冲突
 
-![git-br-feature1](F:\Code\github\工具-前端\assets\0.png)
+![git-br-feature1](..\assets\0.png)
 
 这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突
 
