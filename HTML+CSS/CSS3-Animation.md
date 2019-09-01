@@ -42,4 +42,5 @@
 | [animation-direction](http://www.runoob.com/cssref/css3-pr-animation-direction.html) | 规定动画是否在下一周期逆向地播放。默认是 "normal"。          | 3    |
 | [animation-play-state](http://www.runoob.com/cssref/css3-pr-animation-play-state.html) | 规定动画是否正在运行或暂停。默认是 "running"。               | 3    |
 
-![1554692383421](F:\Code\github\HTML+CSS\assets\1554692383421.png)
+![1554692383421](https://github.com/dubaohao/ALL-READEME/blob/master/assets/1554692383421.png?raw=true)
+
